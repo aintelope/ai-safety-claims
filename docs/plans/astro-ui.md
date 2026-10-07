@@ -3,7 +3,8 @@
 **Status: first version built (2026-10-08).** Open items below.
 
 ## Decisions (2026-10-07)
-- GitHub Pages under the current org: `aintelope.github.io/ai-safety-claims`; moves with the repo.
+- GitHub Pages under the current org, on the custom domain `ai-safety-claims.com` (2026-10-08); the old
+  `aintelope.github.io/ai-safety-claims/` addresses redirect there.
 - Sketches get pages, not prominently: not in the nav or the home table; linked from a collapsed
   "Work in progress" section on each market page; `noindex`.
 - The validator stays the only computation. Astro renders an export.

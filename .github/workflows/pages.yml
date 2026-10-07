@@ -1,7 +1,7 @@
 name: pages
 
 # Builds the Astro site in site/ from `python -m validator export` and publishes it to GitHub Pages:
-# https://aintelope.github.io/ai-safety-claims/
+# https://ai-safety-claims.com/ (custom domain, set in Settings -> Pages)
 # Requires Settings -> Pages -> Source: GitHub Actions.
 
 on:

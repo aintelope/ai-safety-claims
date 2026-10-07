@@ -130,7 +130,7 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 .venv/bin/python -m validator rerun-adapter <dir> --source <file>   # maintainers: rerun a wrapped adapter
 ```
 
-The site (<https://aintelope.github.io/ai-safety-claims/>) is an Astro app in `site/` that renders
+The site (<https://ai-safety-claims.com/>) is an Astro app in `site/` that renders
 `python -m validator export`: one page per market with the full contract, a stable page per contract
 version (`/markets/market-NN/vK/`, the link a listed question should use), the shared rules, and the
 sketches. Locally: `cd site && npm install && npm run data && npm run build`.
