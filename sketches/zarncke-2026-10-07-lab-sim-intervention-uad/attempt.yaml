@@ -1,0 +1,15 @@
+id: zarncke-2026-10-07-lab-sim-intervention-uad
+market: market-01
+contractVersion: 2
+attemptType: run
+submitter: zarncke
+filedAt: '2026-10-07'
+methodFreezeAt: '2026-10-07T19:34:44Z'
+systems:
+- name: lab-sim ecology on MockIsolate
+  version: lab-sim-0.13.0
+notes: Exported from ai-safety-claims-workbench contrib/zarncke-2026-10-07-lab-sim-intervention-uad (custom).
+rawLog:
+  sha256: 8ad1e4f87b138f7de37d4ea35718eec2937a6e7dd9f52836cee145453a7bb1f5
+  bytes: 28019
+  format: lab-sim UAD run log (JSON lines, one per system, plus a header)
