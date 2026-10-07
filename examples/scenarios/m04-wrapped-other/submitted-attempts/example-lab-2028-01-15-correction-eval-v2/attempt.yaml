@@ -1,0 +1,13 @@
+# Fictional fixture.
+id: example-lab-2028-01-15-correction-eval-v2
+market: market-04
+contractVersion: 3
+attemptType: run
+submitter: example-lab
+contact: lab@example.org
+filedAt: '2028-01-15'
+publishedAt: '2028-01-10'
+methodFreezeAt: 2027-10-01T00:00Z
+artifact:
+  url: https://example.org/fixtures/correction-eval-v2
+  sha256: 6e12774fdecd4f0c30ffe7edd609b077e06db6f9b36c17ac123f0366de0450ee

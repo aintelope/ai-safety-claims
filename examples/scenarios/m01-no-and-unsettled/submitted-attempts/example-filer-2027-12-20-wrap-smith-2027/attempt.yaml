@@ -1,0 +1,21 @@
+# Fictional fixture.
+id: example-filer-2027-12-20-wrap-smith-2027
+market: market-01
+contractVersion: 2
+attemptType: wrapped
+submitter: example-filer
+contact: filer@example.org
+filedAt: '2027-12-20'
+publishedAt: '2027-07-01'
+methodFreezeAt: 2027-03-01T00:00Z
+artifact:
+  url: https://example.org/fixtures/smith-2027-data
+  sha256: b78652e915d81de42e7722a66b42c5f0f4c5a55fc397023bdbf2a658693256c0
+wrapped:
+  publication: Smith and Lee (2027), fictional fixture paper on control-unit discovery
+  url: https://example.org/fixtures/smith-2027
+  authors:
+  - A. Smith
+  - B. Lee
+  adapter: Recomputed rates from the released per-system counts; no relabeling.
+freezeEvidence: 'Paper appendix B: method frozen 2027-03-01; adversarial subset built 2027-04-15.'

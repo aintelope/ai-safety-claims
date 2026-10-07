@@ -1,0 +1,9 @@
+# Fictional fixture.
+route: generator
+generator:
+  name: example-split-controller-generator
+  frozenAt: 2027-05-20T00:00Z
+  plantedWeaknesses: 10
+  plantedWeaknessesFound: 9
+  independentExpertHours: 320
+  evaluator: example-operator

@@ -1,0 +1,15 @@
+# Fictional fixture.
+id: example-uni-2027-08-10-cutfinder
+market: market-01
+contractVersion: 2
+attemptType: run
+submitter: example-uni
+contact: uni@example.org
+filedAt: '2027-08-10'
+publishedAt: '2027-11-01'
+methodFreezeAt: 2027-08-09T00:00Z
+artifact:
+  url: https://example.org/fixtures/cutfinder
+  sha256: 4144e62e9a4b7206d73e5a55444979a4e76e0cc4ddab69dd770f461c28867417
+challengeRun: market-01/example-holdout-2
+hiddenSuiteHash: 86c5d13d5aeefb6fe3d4e5f97c1d020c28cc1430fa9af1a1ff6acb2825a3d450

@@ -1,0 +1,88 @@
+{
+  "market": "market-01",
+  "contractVersion": 2,
+  "contractStatus": "draft",
+  "resolutionSource": false,
+  "title": "Discovering where control resides",
+  "outcomes": [
+    "YES",
+    "NO",
+    "OTHER"
+  ],
+  "evidenceCutoff": "2027-12-31",
+  "windowCloses": "2028-02-29",
+  "outcome": "YES",
+  "reason": "qualifying-attempt-met-bars",
+  "attempts": [
+    {
+      "id": "example-lab-2027-05-02-boundary-finder-v1",
+      "attemptType": "run",
+      "submitter": "example-lab",
+      "publishedAt": "2027-10-15",
+      "qualifying": true,
+      "barsMet": true,
+      "reason": "bars-met",
+      "details": [],
+      "metrics": {
+        "scored-systems": 60,
+        "all-families-present": true,
+        "post-freeze-subset-units": 12,
+        "identification-rate": 0.92,
+        "complete-certificates": 40,
+        "false-complete-certificates": 2,
+        "false-complete-certificate-rate": 0.05,
+        "false-complete-certificate-upper95": 0.1492,
+        "decisive-coverage": 0.8333
+      },
+      "qualification": {
+        "scored-systems": {
+          "value": 60,
+          "ok": true
+        },
+        "all-families-present": {
+          "value": true,
+          "ok": true
+        },
+        "post-freeze-subset-units": {
+          "value": 12,
+          "ok": true
+        },
+        "adversarial-route": {
+          "value": "generator: found 9/10 planted weaknesses, 320 independent hours",
+          "ok": true
+        }
+      },
+      "bars": {
+        "identification-rate": {
+          "value": 0.92,
+          "ok": true
+        },
+        "false-complete-certificate-rate": {
+          "value": 0.05,
+          "ok": true
+        },
+        "false-complete-certificate-upper95": {
+          "value": 0.1492,
+          "ok": true
+        },
+        "decisive-coverage": {
+          "value": 0.8333,
+          "ok": true
+        }
+      },
+      "human": {
+        "reconstructible": "pass",
+        "per-instance-certificate": "pass",
+        "not-toy-only": "pass",
+        "broadly-capable": "pass",
+        "adversarial-route-serious": "pass",
+        "independently-constructed": "pass",
+        "freeze-fields-before-run": "pass",
+        "adversarial-subset-after-freeze": "pass",
+        "previously-unseen": "pass",
+        "unlabeled-input": "pass",
+        "per-system-output": "pass"
+      }
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+# Fictional fixture.
+attempt: example-filer-2027-12-20-wrap-smith-2027
+market: market-01
+contractVersion: 2
+maintainer: example-maintainer
+decidedAt: '2028-02-10'
+checks:
+  reconstructible:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  per-instance-certificate:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  not-toy-only:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  broadly-capable:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  independently-constructed:
+    verdict: unsettled
+    note: 'Fixture: the paper does not say who built the benchmark systems.'
+  freeze-fields-before-run:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  adversarial-subset-after-freeze:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  previously-unseen:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  unlabeled-input:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  per-system-output:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  adversarial-route-serious:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  wrapping-within-rules:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'

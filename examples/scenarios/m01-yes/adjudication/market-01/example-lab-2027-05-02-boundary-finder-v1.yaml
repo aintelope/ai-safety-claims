@@ -1,0 +1,40 @@
+# Fictional fixture.
+attempt: example-lab-2027-05-02-boundary-finder-v1
+market: market-01
+contractVersion: 2
+maintainer: example-maintainer
+decidedAt: '2028-02-10'
+checks:
+  reconstructible:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  per-instance-certificate:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  not-toy-only:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  broadly-capable:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  independently-constructed:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  freeze-fields-before-run:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  adversarial-subset-after-freeze:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  previously-unseen:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  unlabeled-input:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  per-system-output:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  adversarial-route-serious:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'

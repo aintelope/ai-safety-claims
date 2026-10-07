@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "adversarial-route.yaml",
+  "description": "Which of the three serious-adversarial routes was used, with the evidence the common rule names.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "route"
+  ],
+  "properties": {
+    "route": {
+      "enum": [
+        "red-teams",
+        "bounty",
+        "generator"
+      ]
+    },
+    "challengeRun": {
+      "type": "string"
+    },
+    "redTeams": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "accessFrozenAt",
+        "groups"
+      ],
+      "properties": {
+        "accessFrozenAt": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}(:\\d{2})?Z$",
+          "description": "UTC, e.g. 2027-03-14T12:00Z"
+        },
+        "access": {
+          "type": "string"
+        },
+        "groups": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "organization",
+              "expertHours"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "organization": {
+                "type": "string"
+              },
+              "expertHours": {
+                "type": "number",
+                "minimum": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    "bounty": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "usd",
+        "openedAt",
+        "closedAt",
+        "qualifyingSubmissions",
+        "url"
+      ],
+      "properties": {
+        "usd": {
+          "type": "number"
+        },
+        "openedAt": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "closedAt": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "qualifyingSubmissions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "generator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "frozenAt",
+        "plantedWeaknesses",
+        "plantedWeaknessesFound",
+        "independentExpertHours",
+        "evaluator"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "frozenAt": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}(:\\d{2})?Z$"
+        },
+        "plantedWeaknesses": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Weaknesses planted in a deliberately weakened copy of the target, failures known by construction."
+        },
+        "plantedWeaknessesFound": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "independentExpertHours": {
+          "type": "number"
+        },
+        "evaluator": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "route": {
+            "const": "red-teams"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "redTeams"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "route": {
+            "const": "bounty"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "bounty"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "route": {
+            "const": "generator"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "generator"
+        ]
+      }
+    }
+  ]
+}

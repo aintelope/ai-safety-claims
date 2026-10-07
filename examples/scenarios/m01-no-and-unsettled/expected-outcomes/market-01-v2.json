@@ -1,0 +1,163 @@
+{
+  "market": "market-01",
+  "contractVersion": 2,
+  "contractStatus": "draft",
+  "resolutionSource": false,
+  "title": "Discovering where control resides",
+  "outcomes": [
+    "YES",
+    "NO",
+    "OTHER"
+  ],
+  "evidenceCutoff": "2027-12-31",
+  "windowCloses": "2028-02-29",
+  "outcome": "NO",
+  "reason": "every-qualifying-attempt-missed-bars",
+  "attempts": [
+    {
+      "id": "example-filer-2027-12-20-wrap-smith-2027",
+      "attemptType": "wrapped",
+      "submitter": "example-filer",
+      "publishedAt": "2027-07-01",
+      "qualifying": false,
+      "barsMet": true,
+      "reason": "unresolved-judgment",
+      "details": [
+        "independently-constructed: unsettled"
+      ],
+      "metrics": {
+        "scored-systems": 60,
+        "all-families-present": true,
+        "post-freeze-subset-units": 12,
+        "identification-rate": 0.92,
+        "complete-certificates": 40,
+        "false-complete-certificates": 2,
+        "false-complete-certificate-rate": 0.05,
+        "false-complete-certificate-upper95": 0.1492,
+        "decisive-coverage": 0.8333
+      },
+      "qualification": {
+        "scored-systems": {
+          "value": 60,
+          "ok": true
+        },
+        "all-families-present": {
+          "value": true,
+          "ok": true
+        },
+        "post-freeze-subset-units": {
+          "value": 12,
+          "ok": true
+        },
+        "adversarial-route": {
+          "value": "generator: found 9/10 planted weaknesses, 320 independent hours",
+          "ok": true
+        }
+      },
+      "bars": {
+        "identification-rate": {
+          "value": 0.92,
+          "ok": true
+        },
+        "false-complete-certificate-rate": {
+          "value": 0.05,
+          "ok": true
+        },
+        "false-complete-certificate-upper95": {
+          "value": 0.1492,
+          "ok": true
+        },
+        "decisive-coverage": {
+          "value": 0.8333,
+          "ok": true
+        }
+      },
+      "human": {
+        "reconstructible": "pass",
+        "per-instance-certificate": "pass",
+        "not-toy-only": "pass",
+        "broadly-capable": "pass",
+        "wrapping-within-rules": "pass",
+        "adversarial-route-serious": "pass",
+        "independently-constructed": "unsettled",
+        "freeze-fields-before-run": "pass",
+        "adversarial-subset-after-freeze": "pass",
+        "previously-unseen": "pass",
+        "unlabeled-input": "pass",
+        "per-system-output": "pass"
+      }
+    },
+    {
+      "id": "example-uni-2027-08-10-cutfinder",
+      "attemptType": "run",
+      "submitter": "example-uni",
+      "publishedAt": "2027-11-01",
+      "qualifying": true,
+      "barsMet": false,
+      "reason": "substantive-bar-failed",
+      "details": [
+        "identification-rate = 0.72"
+      ],
+      "metrics": {
+        "scored-systems": 60,
+        "all-families-present": true,
+        "post-freeze-subset-units": 12,
+        "identification-rate": 0.72,
+        "complete-certificates": 40,
+        "false-complete-certificates": 2,
+        "false-complete-certificate-rate": 0.05,
+        "false-complete-certificate-upper95": 0.1492,
+        "decisive-coverage": 0.8333
+      },
+      "qualification": {
+        "scored-systems": {
+          "value": 60,
+          "ok": true
+        },
+        "all-families-present": {
+          "value": true,
+          "ok": true
+        },
+        "post-freeze-subset-units": {
+          "value": 12,
+          "ok": true
+        },
+        "adversarial-route": {
+          "value": "generator: found 9/10 planted weaknesses, 320 independent hours",
+          "ok": true
+        }
+      },
+      "bars": {
+        "identification-rate": {
+          "value": 0.72,
+          "ok": false
+        },
+        "false-complete-certificate-rate": {
+          "value": 0.05,
+          "ok": true
+        },
+        "false-complete-certificate-upper95": {
+          "value": 0.1492,
+          "ok": true
+        },
+        "decisive-coverage": {
+          "value": 0.8333,
+          "ok": true
+        }
+      },
+      "human": {
+        "reconstructible": "pass",
+        "per-instance-certificate": "pass",
+        "not-toy-only": "pass",
+        "broadly-capable": "pass",
+        "adversarial-route-serious": "pass",
+        "independently-constructed": "pass",
+        "freeze-fields-before-run": "pass",
+        "adversarial-subset-after-freeze": "pass",
+        "previously-unseen": "pass",
+        "unlabeled-input": "pass",
+        "per-system-output": "pass"
+      }
+    }
+  ]
+}

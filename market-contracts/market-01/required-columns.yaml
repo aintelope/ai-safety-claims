@@ -1,0 +1,36 @@
+# score-table.csv columns for market-01 contract version 2.
+# One row per hidden system; unit_id must be unique.
+market: market-01
+contractVersion: 2
+unit: one hidden system
+columns:
+  unit_id:
+    type: str
+    description: Hidden system id from the suite manifest.
+  families:
+    type: enum-list
+    values: [distributed-controller, shared-resources, external-persistent-state, composed-controller, correlation-not-control, other]
+    description: Semicolon-separated benchmark families this system belongs to.
+  freeze_complete:
+    type: bool
+    description: The system's freeze has a component list, response statistic, minimum change, and no-effect range. Rows with false are not scored.
+  components_listed:
+    type: int
+    requiredWhen: {freeze_complete: true}
+    description: Length of the frozen component list.
+  components_named:
+    type: int
+    requiredWhen: {freeze_complete: true}
+    description: Listed components the method named. Names that were not on the frozen list are not included.
+  certificate:
+    type: enum
+    values: [complete, partial, abstain]
+    requiredWhen: {freeze_complete: true}
+    description: complete = a "complete control boundary" certificate; partial = a non-abstain cut not claimed complete.
+  certificate_correct:
+    type: bool
+    requiredWhen: {certificate: complete}
+    description: Whether a complete-boundary certificate is correct against the frozen ground truth.
+  adversarial_subset:
+    type: bool
+    description: The system belongs to the subset constructed adversarially after the method freeze.

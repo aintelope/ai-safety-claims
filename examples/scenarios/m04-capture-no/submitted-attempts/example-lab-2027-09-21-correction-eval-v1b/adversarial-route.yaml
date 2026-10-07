@@ -1,0 +1,15 @@
+# Fictional fixture.
+route: red-teams
+redTeams:
+  accessFrozenAt: 2027-08-01T00:00Z
+  access: full weights and the correction interface
+  groups:
+  - name: example-red-1
+    organization: example-org-a
+    expertHours: 80
+  - name: example-red-2
+    organization: example-org-a
+    expertHours: 95
+  - name: example-red-3
+    organization: example-org-b
+    expertHours: 120

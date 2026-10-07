@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "market-contracts/<market>/contract-vN.yaml",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "market",
+    "version",
+    "status",
+    "title",
+    "bookSection",
+    "resolveBy",
+    "outcomes",
+    "attemptTypes",
+    "adversarialBudget",
+    "freezeOrder",
+    "hiddenSuite",
+    "requiredFiles",
+    "question",
+    "yesRequires",
+    "output",
+    "qualification",
+    "bars",
+    "humanChecks"
+  ],
+  "properties": {
+    "market": {
+      "type": "string",
+      "pattern": "^market-\\d{2}$"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "frozen"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "bookSection": {
+      "type": "string"
+    },
+    "bridge": {
+      "type": "string"
+    },
+    "resolveBy": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "outcomes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "YES",
+          "NO",
+          "OTHER"
+        ]
+      }
+    },
+    "attemptTypes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "run",
+          "wrapped",
+          "stack",
+          "challenge"
+        ]
+      }
+    },
+    "adversarialBudget": {
+      "enum": [
+        "default",
+        "serious",
+        "own"
+      ]
+    },
+    "freezeOrder": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "hiddenSuite": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requiredFor",
+        "postFreezeBuiltAfterMethodFreeze"
+      ],
+      "properties": {
+        "requiredFor": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "run",
+              "wrapped",
+              "stack",
+              "challenge"
+            ]
+          }
+        },
+        "postFreezeBuiltAfterMethodFreeze": {
+          "type": "boolean"
+        }
+      }
+    },
+    "requiredFiles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "question": {
+      "type": "string"
+    },
+    "background": {
+      "type": "string"
+    },
+    "yesRequires": {
+      "type": "string"
+    },
+    "output": {
+      "type": "string"
+    },
+    "qualification": {
+      "$ref": "#/$defs/checks"
+    },
+    "bars": {
+      "$ref": "#/$defs/checks"
+    },
+    "humanChecks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "text"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "openQuestions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "text"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "min": {
+            "type": "number"
+          },
+          "max": {
+            "type": "number"
+          },
+          "equals": {
+            "type": "boolean"
+          }
+        },
+        "minProperties": 3
+      }
+    }
+  }
+}

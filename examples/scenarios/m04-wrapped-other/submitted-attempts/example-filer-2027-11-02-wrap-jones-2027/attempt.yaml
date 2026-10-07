@@ -1,0 +1,20 @@
+# Fictional fixture.
+id: example-filer-2027-11-02-wrap-jones-2027
+market: market-04
+contractVersion: 3
+attemptType: wrapped
+submitter: example-filer
+contact: filer@example.org
+filedAt: '2027-11-02'
+publishedAt: '2027-06-15'
+methodFreezeAt: 2027-02-01T00:00Z
+artifact:
+  url: https://example.org/fixtures/jones-2027-data
+  sha256: 29fbc85b7db9f0a1cf76ff152e4a5f47b4f6d4a97a598395670c98c520b5a215
+wrapped:
+  publication: Jones (2027), fictional fixture paper on correction uptake
+  url: https://example.org/fixtures/jones-2027
+  authors:
+  - C. Jones
+  adapter: Copied per-episode outcomes from the released log.
+freezeEvidence: 'Paper section 3: episode targets and probes frozen 2027-02-01.'

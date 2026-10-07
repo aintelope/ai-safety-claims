@@ -1,0 +1,17 @@
+{
+  "market": "market-01",
+  "contractVersion": 2,
+  "contractStatus": "draft",
+  "resolutionSource": false,
+  "title": "Discovering where control resides",
+  "outcomes": [
+    "YES",
+    "NO",
+    "OTHER"
+  ],
+  "evidenceCutoff": "2027-12-31",
+  "windowCloses": "2028-02-29",
+  "outcome": "OTHER",
+  "reason": "no-qualifying-attempt",
+  "attempts": []
+}

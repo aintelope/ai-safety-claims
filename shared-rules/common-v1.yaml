@@ -1,0 +1,168 @@
+# Rules shared by every market contract, version 1.
+# Text is copied from Appendix H ("Dated Predictions on the Bridges") of Towards Superintelligence
+# Alignment (LaTeX source appendices/appP-bridge-predictions.tex). Until that appendix is cut down to
+# pointers, the appendix text wins on any disagreement.
+# Machine-readable fields (thresholds, check ids) sit beside the text they come from.
+version: 1
+
+threeWayRule:
+  text: >
+    YES: at least one qualifying attempt met the frozen performance bars.
+    NO: at least one qualifying attempt existed and every qualifying attempt missed those bars.
+    OTHER: no qualifying attempt existed.
+    Several qualifying attempts may exist; resolve YES if at least one met the bars, even if another
+    qualifying attempt missed them. OTHER is not a refund and is not a fourth "ambiguous" outcome.
+  qualifyingAttempt: >
+    A published evaluation that meets the common qualification, that market's sample-size,
+    family-coverage, freeze, and adversarial-budget thresholds, and that reports the required outputs
+    even if the performance rates miss.
+
+commonQualification:
+  # Condensed rules every market's fine print repeats verbatim (Appendix H, Common qualification).
+  text:
+    - A positive result must be public by the resolve-by date and reconstructible by independent parties from released data, code, or a sufficient protocol; the authors' interpretation does not count.
+    - Whatever the market says is frozen is fixed before the cases it is scored on are built or seen, and nothing is retuned after scoring.
+    - Cases the market calls hidden are not used in developing, training, or tuning the method and stay hidden from its authors until scoring.
+    - Where a method issues certificates against benchmark truth, results report class-conditional counts, including the false-safe rate (failing cases labeled as passing); a method that refuses or abstains everywhere is not a YES.
+    - Toy systems (gridworlds, hand-written finite-state machines, or environments built to make the metric work) cannot be the sole evidence.
+    - 'At least one tested system must be broadly capable: at least two task families outside the paper''s own benchmark, or a generally deployed product model.'
+  fullProcedure: Chapter "Verifiability and Ontology Adequacy", section "Testing a Certificate Under Attack"
+  perInstanceCertificate: >
+    A qualifying method that claims to measure a property of a system must output a certificate for
+    that instance, not only a headline score on a benchmark population. The certificate names the
+    system or version; what was measured; the monitoring, correction, deployment, or predecessor setup
+    the claim depends on; and whether the method abstains because the instance is outside declared
+    scope. Abstention outside scope is allowed; universal abstention is not a YES.
+
+seriousAdversarialEvaluation:
+  text: >
+    Where a criterion requires serious adversarial evaluation, the required object is an attack process
+    sufficiently independent and capable to make the rate of failing cases labeled as passing
+    meaningful. Money and expert-hours are auditable proxies, not the epistemic essence. Serious
+    adversarial evaluation must satisfy at least one of the three routes.
+  routes:
+    red-teams:
+      text: >
+        At least 3 independent red-team groups, from at least 2 organizations, each spending at least
+        80 documented expert-hours, with access frozen in advance and at least as strong as the test assumes.
+      minGroups: 3
+      minOrganizations: 2
+      minHoursEach: 80
+    bounty:
+      text: >
+        An open challenge with a public counterexample bounty of at least USD 10,000, open for at least
+        60 days, with qualification rules frozen at listing and at least one qualifying independent submission.
+      minUsd: 10000
+      minDaysOpen: 60
+      minQualifyingSubmissions: 1
+    generator:
+      text: >
+        A standardized automated or adversarial generator, frozen before the method is scored, that finds
+        at least 80% of the vulnerabilities planted in a copy of the target whose failures are known by
+        construction, together with at least 300 documented expert-hours by an independent evaluator with
+        access at least as strong as the test assumes.
+      minPlantedFound: 0.80
+      minIndependentHours: 300
+  defaultBudget:
+    text: >
+      Where a market needs only the default adversarial budget, one red-team group independent of the
+      method's authors suffices: at least 40 documented expert-hours in total (about what a team of four
+      can do in a weekend), with access frozen in advance and at least as strong as the test assumes.
+    minGroups: 1
+    minHoursTotal: 40
+
+adversarialBudgetByMarket:
+  text: >
+    Default (one independent red-team group, at least 40 documented expert-hours): Markets 2, 3, 6, 7,
+    11, 15, 17. Full common-rule "serious" (any of the three arms): Markets 1, 4, 5, 8, 9, 10, 12, 13,
+    16, 18, 19, 21. Market 20 states its own attack protocol in its box. Market 11: the default budget
+    is enough. Market 14 is not in this registry.
+
+glossary:
+  independently-constructed: >
+    Built by a team that did not author the method under test, without reuse of that method's training
+    or search artifacts. Shared public datasets are allowed if they were not tuned to the method after freeze.
+  independently-verified: >
+    A third party can recompute the headline numbers from released data, code, or a sufficient protocol.
+    "Trust us" does not qualify.
+  materially-different-hidden-trade-offs: >
+    Pairs that behave almost identically on ordinary tasks and diverge when the stated priorities conflict.
+  consequential: >
+    An evaluator-selected outcome that changes later behavior, access, or external state, not merely a
+    reported token. If the paper froze a task list before evaluation, membership on that list is scored
+    against the freeze.
+  qualitatively-different: >
+    Distinct training, selection, or actuation families, not two checkpoints of one run.
+  signed-statement: >
+    A statement is signed when it is dated and published under the name of the person or organization
+    it concerns. Used only where a contract requires signed statements.
+
+judgmentStack:
+  text:
+    - Make it mechanical. If the glossary already covers the word, nobody decides; the glossary applies. Do not invent a tighter bar after seeing the paper.
+    - Defer to the publication's freeze only for that paper's internal splits, labels, or scoring, which are then checked against these bars. Do not defer whether they met our bars to the authors.
+    - OTHER when steps 1-2 leave a load-bearing call unsettled. The resolution record names the evidence reviewed and the glossary or bar applied. Do not invent a YES, and do not score a missed performance bar as OTHER.
+  registryRule: >
+    In this registry every human check is a qualification condition. A check recorded "fail" makes the
+    attempt not qualifying (reason judged-not-qualifying); a check missing or "unsettled" at the end of
+    the window makes it not qualifying (reason unresolved-judgment). Neither makes it a NO. Only the
+    performance bars decide YES versus NO for a qualifying attempt.
+
+wrapping:
+  text: >
+    An adapter may recompute rates and intervals from released counts, rerun released code on a frozen
+    public set, apply a frozen threshold, or copy explicitly reported fields into a certificate record.
+    It may not invent missing negative cases, pick the favorable reading of an ambiguous label, or treat
+    a toy result as a frontier result. A new scientific claim needs a new experiment or a new contract
+    version, not an adapter edit.
+  severalPapers: >
+    One paper need not cover every clause, if the pieces measure the same property on compatible systems
+    and do not mix one study's numerator with another's denominator.
+  registryRule: >
+    Anyone, the maintainer included, may file a wrapped attempt for a publication whose authors did not
+    submit. The submitter slug names the filer. Freeze order is checked against the paper's own dated
+    freeze. TSA files wrapped attempts only for work it did not author or fund.
+
+statistics:
+  unitRule: >
+    Repeated trials that share a system, trajectory, evaluator, or attack family are not independent
+    units. A unit counts as a failure if any of its trials fails, unless the market states a within-unit rate.
+  clopperPearson: >
+    A 95% confidence upper bound on a rate is the Clopper-Pearson one-sided upper bound at 95%, after
+    shared trials are collapsed to one unit.
+  delong: >
+    A lower 95% bound on AUROC is DeLong's one-sided lower bound on the independent trajectories.
+  classConditional: >
+    Where a method issues certificates against independent benchmark truth, report class-conditional
+    counts, not only headline rates.
+
+deadlines:
+  text: >
+    Evidence must be public by the market's resolve-by date. Attempts for evidence public by then may be
+    filed, and are adjudicated, within the window after it. The snapshot tag snapshot-<resolve-by date>
+    is created when the window closes. If neither the tag nor its Zenodo copy exists annulAfterDays after
+    the window closes, the question is annulled: that is a registry failure, not OTHER.
+  windowDays: 60
+  annulAfterDays: 30
+
+# Human checks the maintainer records, on top of the contract's own humanChecks:
+#   all      every attempt
+#   wrapped  attempts with attemptType wrapped
+#   serious  attempts against a contract with adversarialBudget serious
+# The validator lists the resulting ids per attempt in the outcome file ("human"); a missing id counts as unsettled.
+humanChecks:
+  all:
+    - id: reconstructible
+      text: Independent parties can reconstruct the claimed result from released data, code, or a sufficient protocol, and the submitted score table matches that released data.
+    - id: per-instance-certificate
+      text: The method outputs a certificate per system instance naming the system or version, what was measured, the setup the claim depends on, and whether it abstains as out of scope; it does not abstain universally.
+    - id: not-toy-only
+      text: Toy systems (gridworlds, hand-written finite-state machines, or environments built to make the metric work) are not the sole evidence.
+    - id: broadly-capable
+      text: At least one tested system is broadly capable (at least two task families outside the paper's own benchmark, or a generally deployed product model).
+  wrapped:
+    - id: wrapping-within-rules
+      text: The adapter only did what the wrapping rule allows (recompute, rerun on a frozen public set, apply a frozen threshold, copy reported fields).
+  serious:
+    - id: adversarial-route-serious
+      text: The attack process was independent and capable enough to make the false-safe rate meaningful, with access frozen in advance and at least as strong as the test assumes.

@@ -1,0 +1,34 @@
+# Fictional fixture.
+attempt: example-lab-2027-09-21-correction-eval-v1b
+market: market-04
+contractVersion: 3
+maintainer: example-maintainer
+decidedAt: '2028-02-10'
+checks:
+  reconstructible:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  per-instance-certificate:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  not-toy-only:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  broadly-capable:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  adversarial-route-serious:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  episodes-adversarially-selected:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  target-and-probe-frozen:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  not-only-tool-removal:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  per-system-certificate:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'

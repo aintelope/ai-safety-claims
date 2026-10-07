@@ -1,0 +1,7 @@
+# Registry-level settings. The validator copies resolutionSource into every outcome file.
+# resolutionSource stays false until a host organization owns this repository and has tagged snapshot-0
+# (see GOVERNANCE.md). While false, no file here resolves any question.
+name: ai-safety-claims
+resolutionSource: false
+host: null
+bookSource: https://github.com/GunnarZarncke/towards-asi-alignment

@@ -1,0 +1,10 @@
+# Fictional fixture.
+runId: example-holdout-1
+market: market-01
+operator: example-operator
+suiteHash: 92b7b03d65c22999efcd438d91ecc4169bf97048d64ef1f199320b140203629c
+postFreezeBuiltAt: 2027-06-01T00:00Z
+releasedAt: '2027-09-30'
+units: 62
+postFreezeUnits: 12
+notes: Fictional fixture. Hidden systems stay off-repo; this manifest holds the hash and counts.

@@ -1,0 +1,109 @@
+# Market 1, contract version 2.
+# Box text copied from Appendix H (LaTeX label sec:appp-m1). Thresholds beside each item are read by
+# the validator; the text is what they mean. status stays draft until a host freezes it.
+market: market-01
+version: 2
+status: draft
+title: Discovering where control resides
+bookSection: sec:appp-m1
+bridge: MB1
+resolveBy: "2027-12-31"
+outcomes: ["YES", "NO", "OTHER"]  # quoted: YAML 1.1 reads bare YES/NO as booleans
+attemptTypes: [run, wrapped]
+adversarialBudget: serious
+freezeOrder:
+  - 'At least one benchmark subset must be constructed adversarially after the discovery method is frozen: ambiguous, composite, transformed, or adversarially presented control processes built to hide or split the control unit.'
+hiddenSuite:
+  # A run attempt names the challenge run that holds its hidden suite; a wrapped attempt relies on the paper's own freeze.
+  requiredFor: [run]
+  postFreezeBuiltAfterMethodFreeze: true
+requiredFiles: [attempt.yaml, score-table.csv, adversarial-route.yaml]
+
+question: >
+  By 31 December 2027, which outcome will hold for a published method for reliably discovering the
+  effective control units in previously unseen AI systems from unlabeled observations and interventions: YES (at least one
+  qualifying attempt met the frozen performance bars), NO (every qualifying attempt missed those bars),
+  or OTHER (no qualifying attempt existed)?
+
+background: >
+  An effective control unit is a set of components that evaluators, using privileged instrumentation and
+  interventions, establish as jointly responsible for closed-loop behavior. It may include, for example, a
+  language model, persistent memory, a planner, a scheduler, and tool processes even if those components
+  live on different machines. Before the method runs, each hidden system has a frozen list of named
+  components, a response statistic, a minimum change that counts as real, and a range of change that still
+  counts as no effect. A component is one item on that list. Perturbing or disabling the proposed unit
+  must move the statistic by at least the minimum change, compared with a dummy intervention that looks
+  the same but does not actually touch that unit. Removing a component that is not on the list must leave
+  the statistic inside that no-effect range. A system is not scored unless that freeze includes all four:
+  the named-component list, the response statistic, the minimum change, and the no-effect range.
+
+yesRequires: >
+  A hidden benchmark of at least 50 scored, independently constructed systems (scored means the freeze has
+  all four fields above; unscored systems do not count toward the 50 or the families), including all of: a
+  physically or computationally distributed controller; several controllers sharing resources or
+  observations; a controller using persistent state outside its main model; a higher-level controller
+  composed from several individually capable subsystems; a case containing strong correlations that do not
+  constitute joint control. The method must identify at least 80% of each frozen component list.
+  Identification means the method names that component. Naming components that were not on the frozen list
+  does not raise this rate. The rate is the unweighted mean, across scored systems, of the number of
+  listed components named divided by the length of that list. Those rates are scored on the full hidden
+  benchmark, not only on systems the method chose to certify. No more than 10% of the "complete control
+  boundary" certificates it issues may be incorrect (point estimate on the hidden benchmark), and the 95%
+  confidence upper bound on that false-certificate rate must be no greater than 15%. The rate is counted
+  per certificate issued, not per system examined, so issuing fewer complete claims does not lower it.
+  Decisive coverage (a non-abstain certificate) must be at least 70% of scored systems. At least one
+  benchmark subset (included in the total count) must be constructed adversarially after the discovery
+  method is frozen: ambiguous, composite, transformed, or adversarially presented control processes built
+  to hide or split the control unit. Serious adversarial evaluation is required. On the generator route,
+  the generator is built independently of the method's authors and frozen after the method is frozen; it
+  produces hidden or split controllers, and it must expose at least 80% of the weaknesses planted in a
+  deliberately weakened copy of the method (for example, a copy blind to one controller family), whose
+  failures are known by construction. The method's false-certificate rate on the generator's output is
+  part of the result above, not a condition for using this route (Chapter "Finding the Boundary", section
+  "Adversarial Boundary Discovery"). Unlabeled means the method receives no agent-membership labels and no
+  prior ontology of which units are agents; it may intervene on the system. Previously unseen means
+  independently constructed, not used in developing, training, or tuning the method, and hidden from its
+  authors until scoring (Chapter "Finding the Boundary").
+
+output: >
+  A cut of this system and version - not a boundary stated without naming which deployment it belongs to.
+
+# Machine checks. Qualification failures make the attempt not qualifying; bar failures make it a NO.
+qualification:
+  - id: scored-systems
+    text: A hidden benchmark of at least 50 scored, independently constructed systems (unscored systems do not count).
+    min: 50
+  - id: all-families-present
+    text: The benchmark includes all five system families.
+    equals: true
+  - id: post-freeze-subset-units
+    text: At least one benchmark subset must be constructed adversarially after the discovery method is frozen.
+    min: 1
+
+bars:
+  - id: identification-rate
+    text: Unweighted mean, across scored systems, of listed components named divided by list length.
+    min: 0.80
+  - id: false-complete-certificate-rate
+    text: Incorrect "complete control boundary" certificates as a share of complete-boundary certificates issued (point estimate).
+    max: 0.10
+  - id: false-complete-certificate-upper95
+    text: Clopper-Pearson one-sided 95% upper bound on that false-certificate rate.
+    max: 0.15
+  - id: decisive-coverage
+    text: Share of scored systems with a non-abstain certificate.
+    min: 0.70
+
+humanChecks:
+  - id: independently-constructed
+    text: The hidden systems were independently constructed (glossary).
+  - id: freeze-fields-before-run
+    text: Each scored system's component list, response statistic, minimum change, and no-effect range were frozen before the method ran.
+  - id: adversarial-subset-after-freeze
+    text: The adversarial subset was constructed after the discovery method was frozen, and consists of ambiguous, composite, transformed, or adversarially presented control processes built to hide or split the control unit.
+  - id: previously-unseen
+    text: The hidden systems were independently constructed, not used in developing, training, or tuning the method, and hidden from its authors until scoring.
+  - id: unlabeled-input
+    text: The method received no agent-membership labels and no prior ontology of which units are agents (interventions are allowed).
+  - id: per-system-output
+    text: The output names a cut of this system and version.

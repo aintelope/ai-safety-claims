@@ -1,0 +1,20 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      # Fails if market-outcomes/ or ui/ differ from what the validator computes,
+      # or if a submitted file sets an outcome field.
+      - run: python -m validator check
+      - run: python -m validator test
