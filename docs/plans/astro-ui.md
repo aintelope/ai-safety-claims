@@ -8,6 +8,11 @@
   "Work in progress" section on each market page; `noindex`.
 - The validator stays the only computation. Astro renders an export.
 
+## Interim (2026-10-07)
+- [x] `.github/workflows/pages.yml` publishes `ui/index.html` on every push to main, after
+      `validator check`. Needs Settings -> Pages -> Source: GitHub Actions (org admin).
+- [ ] When the Astro site exists, the same workflow builds it and uploads `site/dist` instead of `ui/`.
+
 ## Steps
 - [ ] `validator export` → `ui/data/*.json` (contracts, attempts, outcomes, adjudication status, sketch dry
       runs, evidence summaries) with a schema; `validator check` compares the export instead of
