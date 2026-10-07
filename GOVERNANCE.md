@@ -1,7 +1,10 @@
 # Governance
 
-**Draft.** No host organization owns this repository yet. Until one does, the scaffold author may merge
-anything, `registry.yaml` keeps `resolutionSource: false`, and no outcome file resolves any question.
+**Draft.** The repository is hosted for now by aintelope, which is not independent of the book project
+the contracts come from (`registry.yaml`: `hostIndependent: false`). Until an independent host takes
+over, the scaffold author may merge anything, `registry.yaml` keeps `resolutionSource: false`, no
+outcome file resolves any question, and attempts submitted or authored by aintelope or Gunnar Zarncke
+are not accepted.
 
 ## Host
 

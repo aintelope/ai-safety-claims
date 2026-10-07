@@ -18,6 +18,7 @@ th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line
 th { color: var(--muted); font-weight: 600; }
 .YES { color: var(--yes); font-weight: 700; } .NO { color: var(--no); font-weight: 700; } .OTHER { color: var(--other); font-weight: 700; }
 code { font-size: 0.9em; }
+.footnote { font-size: 0.85rem; margin-top: -8px; }
 """
 
 
@@ -30,8 +31,19 @@ def render(outcomes, registry):
              "Each market resolves YES (a qualifying attempt met the bars), NO (every qualifying attempt missed), "
              "or OTHER (no qualifying attempt).</p>"]
     if not registry["resolutionSource"]:
-        parts.append('<div class="banner"><strong>Not a resolution source.</strong> No host organization owns this '
-                     "registry yet. Contracts are drafts and no outcome below resolves any question.</div>")
+        if registry.get("host") and not registry.get("hostIndependent"):
+            excluded = " or ".join(escape(x) for x in registry.get("notAcceptedWhileNotIndependent") or [])
+            parts.append(f'<div class="banner"><strong>Not a resolution source.</strong> Hosted for now by '
+                         f'{escape(registry["host"])}, which is not independent of the book project the contracts '
+                         'come from.<sup>1</sup> Contracts are drafts and no outcome below resolves any question.</div>')
+            if excluded:
+                parts.append(f'<p class="footnote"><sup>1</sup> Until an independent host owns the registry, attempts '
+                             f'submitted or authored by {excluded} are not accepted. See '
+                             '<a href="https://github.com/aintelope/ai-safety-claims/blob/main/GOVERNANCE.md">'
+                             'GOVERNANCE.md</a>.</p>')
+        else:
+            parts.append('<div class="banner"><strong>Not a resolution source.</strong> No independent host owns '
+                         "this registry yet. Contracts are drafts and no outcome below resolves any question.</div>")
     parts.append('<div class="table-wrap"><table><thead><tr><th>Market</th><th>Contract</th><th>Evidence cutoff</th>'
                  "<th>Attempts</th><th>Qualifying</th><th>Outcome</th></tr></thead><tbody>")
     for name, o in outcomes.items():

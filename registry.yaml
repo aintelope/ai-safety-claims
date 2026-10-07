@@ -1,7 +1,12 @@
 # Registry-level settings. The validator copies resolutionSource into every outcome file.
-# resolutionSource stays false until a host organization owns this repository and has tagged snapshot-0
+# resolutionSource stays false until an independent host owns this repository and has tagged snapshot-0
 # (see GOVERNANCE.md). While false, no file here resolves any question.
 name: ai-safety-claims
 resolutionSource: false
-host: null
+# Interim host. aintelope is not independent of the book project the contracts come from.
+host: aintelope
+hostIndependent: false
+# While the host is not independent, attempts submitted or authored by these are not accepted
+# (GOVERNANCE.md, Host). Shown on the site.
+notAcceptedWhileNotIndependent: [aintelope, Gunnar Zarncke]
 bookSource: https://github.com/GunnarZarncke/towards-asi-alignment

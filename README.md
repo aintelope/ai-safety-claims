@@ -4,9 +4,12 @@ A registry that scores published AI-safety evaluations against frozen **market c
 outcome file per contract version: YES, NO, or OTHER. A prediction-market admin resolves a question by
 opening that file at a named git tag and reading its `outcome` field.
 
-> **Status: scaffold. Not a resolution source.** No host organization owns this repository yet
-> (`registry.yaml`: `resolutionSource: false`). Contracts are drafts. Until a host owns the repo and tags
-> `snapshot-0`, no file here resolves any question. See [`GOVERNANCE.md`](GOVERNANCE.md).
+> **Status: scaffold. Not a resolution source.** Hosted for now by aintelope, which is not independent
+> of the book project the contracts come from (`registry.yaml`: `resolutionSource: false`). Contracts are
+> drafts. Until an independent host owns the repo and tags `snapshot-0`, no file here resolves any
+> question.[^interim] See [`GOVERNANCE.md`](GOVERNANCE.md).
+
+[^interim]: Until then, attempts submitted or authored by aintelope or Gunnar Zarncke are not accepted.
 
 ## What an outcome means
 
