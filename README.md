@@ -4,10 +4,10 @@ A registry that scores published AI-safety evaluations against frozen **market c
 outcome file per contract version: YES, NO, or OTHER. A prediction-market admin resolves a question by
 opening that file at a named git tag and reading its `outcome` field.
 
-> **Status: scaffold. Not a resolution source.** Hosted for now by aintelope, which is not independent
-> of the book project the contracts come from (`registry.yaml`: `resolutionSource: false`). Contracts are
-> drafts. Until an independent host owns the repo and tags `snapshot-0`, no file here resolves any
-> question.[^interim] See [`GOVERNANCE.md`](GOVERNANCE.md).
+> **Status: catalog contracts frozen as versions. Not a resolution source.** Hosted for now by aintelope,
+> which is not independent of the book project the contracts come from (`registry.yaml`:
+> `resolutionSource: false`). Until an independent host owns the repo and tags `snapshot-0`, no file here
+> resolves any question.[^interim] See [`GOVERNANCE.md`](GOVERNANCE.md).
 
 [^interim]: Until then, attempts submitted or authored by aintelope or Gunnar Zarncke are not accepted.
 
@@ -28,17 +28,31 @@ is safe.
 
 The markets are defined in Appendix H, "Dated Predictions on the Bridges," of the book
 [*Towards Superintelligence Alignment*](https://github.com/GunnarZarncke/towards-asi-alignment). Each
-contract copies its appendix box verbatim and adds machine-readable thresholds. Until the appendix is cut
-down to pointers, the appendix text wins on any disagreement. Ambiguities found while copying are listed
-under `openQuestions` in the contract; a contract stays `draft` until they are settled. Version numbers follow the book's contract versions.
+contract copies its appendix box and adds machine-readable thresholds. The registry text is authoritative
+for bars. Version numbers follow the book's `contractVersion` for this freeze.
 
 | Contract | Title | Evidence cutoff | Status |
 |----------|-------|-----------------|--------|
-| [`market-01` v2](market-contracts/market-01/contract-v2.yaml) | Discovering where control resides | 2027-12-31 | draft |
-| [`market-04` v3](market-contracts/market-04/contract-v3.yaml) | Corrections change the system | 2027-12-31 | draft |
+| [`market-01` v2](market-contracts/market-01/contract-v2.yaml) | Discovering where control resides | 2027-12-31 | frozen |
+| [`market-02` v1](market-contracts/market-02/contract-v1.yaml) | Persistent trade-off priorities | 2027-12-31 | frozen |
+| [`market-03` v1](market-contracts/market-03/contract-v1.yaml) | Who or what rules apply to | 2027-12-31 | frozen |
+| [`market-04` v3](market-contracts/market-04/contract-v3.yaml) | Corrections change the system | 2027-12-31 | frozen |
+| [`market-05` v1](market-contracts/market-05/contract-v1.yaml) | Auditor is independent | 2027-12-31 | frozen |
+| [`market-06` v2](market-contracts/market-06/contract-v2.yaml) | Reliable successor safety auditing | 2027-12-31 | frozen |
+| [`market-07` v1](market-contracts/market-07/contract-v1.yaml) | Correctability under competitive selection | 2027-12-31 | frozen |
+| [`market-08` v2](market-contracts/market-08/contract-v2.yaml) | Auditor can sufficiently inspect the system | 2027-12-31 | frozen |
+| [`market-09` v1](market-contracts/market-09/contract-v1.yaml) | Bounds on unmonitored routes | 2027-12-31 | frozen |
+| [`market-10` v1](market-contracts/market-10/contract-v1.yaml) | Low hidden capability and reliable correction | 2027-12-31 | frozen |
+| [`market-11` v1](market-contracts/market-11/contract-v1.yaml) | Coordination without communication | 2027-12-31 | frozen |
+| [`market-12` v1](market-contracts/market-12/contract-v1.yaml) | Safety proxy tracks the real thing | 2027-12-31 | frozen |
+| [`market-13` v2](market-contracts/market-13/contract-v2.yaml) | Safety audit resists adversarial gaming | 2027-06-30 | frozen |
+| [`market-15` v1](market-contracts/market-15/contract-v1.yaml) | Independently issued certificates compose | 2027-12-31 | frozen |
+| [`market-16` v1](market-contracts/market-16/contract-v1.yaml) | Selection that keeps correction under shocks | 2027-12-31 | frozen |
+| [`market-17` v1](market-contracts/market-17/contract-v1.yaml) | New kinds of entities are classified correctly | 2027-12-31 | frozen |
+| [`market-18` v1](market-contracts/market-18/contract-v1.yaml) | Safety case bounds declared harm | 2027-12-31 | frozen |
 
-The other catalog markets get contracts as they are copied. Market 14 (deployment criteria are binding)
-is not handled here: its evidence is a few public documents, so it is listed directly as a YES/NO question.
+Market 14 (deployment criteria are binding) is not handled here: its evidence is a few public documents,
+so it is listed directly as a YES/NO question. Markets 19–21 stay uncopied until Phase 4.
 
 ## How it works
 

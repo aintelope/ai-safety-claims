@@ -1,0 +1,43 @@
+# score-table.csv columns for market-16 contract version 1. one selection trajectory; id must be unique.
+market: market-16
+contractVersion: 1
+unit: one selection trajectory
+columns:
+  case_id:
+    type: str
+    description: Trajectory id
+  mechanism:
+    type: str
+    description: ''
+  inside:
+    type: bool
+    description: Inside claimed regime
+  uptake:
+    type: bool
+    description: Authorized correction succeeded
+  persisted:
+    type: bool
+    description: New rule held after reset
+  classified_safe:
+    type: bool
+    description: Trajectory classified as retaining correction
+cases:
+  unit: one selection trajectory
+  fields:
+    mechanism:
+      type: str
+      description: ''
+    inside:
+      type: bool
+      description: ''
+results:
+  fields:
+    uptake:
+      type: bool
+      description: ''
+    persisted:
+      type: bool
+      description: ''
+    classified_safe:
+      type: bool
+      description: ''

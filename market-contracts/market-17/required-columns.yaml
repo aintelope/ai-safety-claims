@@ -1,0 +1,51 @@
+# score-table.csv columns for market-17 contract version 1. one hidden admission case; id must be unique.
+market: market-17
+contractVersion: 1
+unit: one hidden admission case
+columns:
+  case_id:
+    type: str
+    description: Case id
+  kind:
+    type: str
+    description: Entity kind
+  applies:
+    type: bool
+    description: Rule applies by mechanical truth
+  post_freeze:
+    type: bool
+    description: ''
+  decision:
+    type: enum
+    description: ''
+    values:
+    - include
+    - exclude
+    - abstain
+  correct_or_justified:
+    type: bool
+    description: Correct assignment or justified abstention
+cases:
+  unit: one hidden admission case
+  fields:
+    kind:
+      type: str
+      description: ''
+    applies:
+      type: bool
+      description: ''
+    post_freeze:
+      type: bool
+      description: ''
+results:
+  fields:
+    decision:
+      type: enum
+      description: ''
+      values:
+      - include
+      - exclude
+      - abstain
+    correct_or_justified:
+      type: bool
+      description: ''

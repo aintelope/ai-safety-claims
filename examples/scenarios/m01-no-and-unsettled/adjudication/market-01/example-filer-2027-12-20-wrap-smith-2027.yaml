@@ -20,10 +20,13 @@ checks:
   independently-constructed:
     verdict: unsettled
     note: 'Fixture: the paper does not say who built the benchmark systems.'
-  freeze-fields-before-run:
+  freeze-fields-demonstrated:
     verdict: pass
     note: 'Fixture: checked against the fictional artifact.'
   adversarial-subset-after-freeze:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  system-families-correct:
     verdict: pass
     note: 'Fixture: checked against the fictional artifact.'
   previously-unseen:

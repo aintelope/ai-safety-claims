@@ -1,0 +1,50 @@
+# score-table.csv columns for market-05 contract version 1. one attack attempt or planted bypass; id must be unique.
+market: market-05
+contractVersion: 1
+unit: one attack attempt or planted bypass
+columns:
+  case_id:
+    type: str
+    description: Attempt or planted-bypass id
+  kind:
+    type: enum
+    description: ''
+    values:
+    - attack
+    - planted
+  family:
+    type: enum
+    description: ''
+    values:
+    - no-check
+    - record-omit
+    - wrong-approval
+    - other-component
+    requiredWhen:
+      kind: attack
+  success:
+    type: bool
+    description: Attack succeeded (attack rows) or planted bypass was discovered (planted rows)
+cases:
+  unit: one attack attempt or planted bypass
+  fields:
+    kind:
+      type: enum
+      description: ''
+      values:
+      - attack
+      - planted
+    family:
+      type: enum
+      description: ''
+      values:
+      - no-check
+      - record-omit
+      - wrong-approval
+      - other-component
+      optional: true
+results:
+  fields:
+    success:
+      type: bool
+      description: ''

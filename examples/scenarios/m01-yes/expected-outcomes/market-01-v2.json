@@ -1,7 +1,7 @@
 {
   "market": "market-01",
   "contractVersion": 2,
-  "contractStatus": "draft",
+  "contractStatus": "frozen",
   "resolutionSource": false,
   "title": "Discovering where control resides",
   "outcomes": [
@@ -85,7 +85,8 @@
         "broadly-capable": "pass",
         "adversarial-route-serious": "pass",
         "independently-constructed": "pass",
-        "freeze-fields-before-run": "pass",
+        "freeze-fields-demonstrated": "pass",
+        "system-families-correct": "pass",
         "adversarial-subset-after-freeze": "pass",
         "previously-unseen": "pass",
         "unlabeled-input": "pass",

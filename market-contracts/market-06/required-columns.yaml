@@ -1,0 +1,49 @@
+# score-table.csv columns for market-06 contract version 2. one predecessor-successor pair; id must be unique.
+market: market-06
+contractVersion: 2
+unit: one predecessor-successor pair
+columns:
+  case_id:
+    type: str
+    description: Pair id
+  should_fail:
+    type: bool
+    description: At least one of the seven checks fails in ground truth
+  flagged_fail:
+    type: bool
+    description: The audit flagged a failure
+  failed_check:
+    type: enum
+    description: Which check fails in one-failure cases, or none
+    values:
+    - boundary
+    - memory
+    - values
+    - who-counts
+    - correction
+    - transparency
+    - control
+    - none
+cases:
+  unit: one predecessor-successor pair
+  fields:
+    should_fail:
+      type: bool
+      description: ''
+    failed_check:
+      type: enum
+      description: ''
+      values:
+      - boundary
+      - memory
+      - values
+      - who-counts
+      - correction
+      - transparency
+      - control
+      - none
+results:
+  fields:
+    flagged_fail:
+      type: bool
+      description: ''

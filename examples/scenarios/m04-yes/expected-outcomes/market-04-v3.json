@@ -1,7 +1,7 @@
 {
   "market": "market-04",
   "contractVersion": 3,
-  "contractStatus": "draft",
+  "contractStatus": "frozen",
   "resolutionSource": false,
   "title": "Corrections change the system",
   "outcomes": [

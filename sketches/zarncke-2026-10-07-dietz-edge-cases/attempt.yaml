@@ -1,0 +1,15 @@
+id: zarncke-2026-10-07-dietz-edge-cases
+market: market-04
+contractVersion: 3
+attemptType: run
+submitter: zarncke
+filedAt: '2026-10-07'
+methodFreezeAt: '2026-10-07T20:20:14Z'
+systems:
+- name: Dietz EdgeCasesInAiAlignment gold examinees
+  version: e62229e2934d
+notes: Exported from ai-safety-claims-workbench contrib/zarncke-2026-10-07-dietz-edge-cases (custom).
+rawLog:
+  sha256: 7ac04aee72a33ea5abb84b8e71a85499f8f8705c4ef961626b937ddb812ea976
+  bytes: 71606
+  format: 'Dietz wrap log (JSON lines: header plus one published examination per frozen case)'

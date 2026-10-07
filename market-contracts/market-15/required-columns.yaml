@@ -1,0 +1,65 @@
+# score-table.csv columns for market-15 contract version 1. one certificate bundle; id must be unique.
+market: market-15
+contractVersion: 1
+unit: one certificate bundle
+columns:
+  case_id:
+    type: str
+    description: Bundle id
+  architecture:
+    type: str
+    description: ''
+  faulty:
+    type: bool
+    description: ''
+  fault_family:
+    type: enum
+    description: ''
+    values:
+    - wrong-version
+    - access-mismatch
+    - correction-authority
+    - applicability-change
+    - wrong-predecessor
+    - out-of-scope
+    - none
+  post_freeze:
+    type: bool
+    description: ''
+  rejected_or_flagged:
+    type: bool
+    description: ''
+  accepted:
+    type: bool
+    description: ''
+cases:
+  unit: one certificate bundle
+  fields:
+    architecture:
+      type: str
+      description: ''
+    faulty:
+      type: bool
+      description: ''
+    fault_family:
+      type: enum
+      description: ''
+      values:
+      - wrong-version
+      - access-mismatch
+      - correction-authority
+      - applicability-change
+      - wrong-predecessor
+      - out-of-scope
+      - none
+    post_freeze:
+      type: bool
+      description: ''
+results:
+  fields:
+    rejected_or_flagged:
+      type: bool
+      description: ''
+    accepted:
+      type: bool
+      description: ''

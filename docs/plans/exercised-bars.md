@@ -17,5 +17,5 @@
 - [x] Appendix H sentence; book `sync:predictions` and `make check` pass; book session log written.
 
 ## Open
-- [ ] Author call: real minimum number of fake corrections (Market 4) or correlation-not-control systems
-      (Market 1). Box first, then contract.
+- [x] Author call (2026-10-07): one design-supplied case per bar is enough; see
+      `registry-open-questions.md` item 1.

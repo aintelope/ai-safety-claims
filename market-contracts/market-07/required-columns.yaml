@@ -1,0 +1,37 @@
+# score-table.csv columns for market-07 contract version 1. one selection trajectory; id must be unique.
+market: market-07
+contractVersion: 1
+unit: one selection trajectory
+columns:
+  case_id:
+    type: str
+    description: Trajectory id
+  mechanism:
+    type: str
+    description: Selection mechanism
+  lost:
+    type: bool
+    description: Trajectory lost correction
+  score:
+    type: number
+    description: Predictor score that losing is more likely
+  predicted_keep:
+    type: bool
+    description: Predictor classified as keep
+cases:
+  unit: one selection trajectory
+  fields:
+    mechanism:
+      type: str
+      description: ''
+results:
+  fields:
+    lost:
+      type: bool
+      description: ''
+    score:
+      type: number
+      description: ''
+    predicted_keep:
+      type: bool
+      description: ''

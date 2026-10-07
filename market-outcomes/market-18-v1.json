@@ -1,0 +1,17 @@
+{
+  "market": "market-18",
+  "contractVersion": 1,
+  "contractStatus": "frozen",
+  "resolutionSource": false,
+  "title": "Safety case bounds declared harm",
+  "outcomes": [
+    "YES",
+    "NO",
+    "OTHER"
+  ],
+  "evidenceCutoff": "2027-12-31",
+  "windowCloses": "2028-02-29",
+  "outcome": "OTHER",
+  "reason": "no-qualifying-attempt",
+  "attempts": []
+}

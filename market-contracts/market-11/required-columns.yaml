@@ -1,0 +1,44 @@
+# score-table.csv columns for market-11 contract version 1. one hidden coordination case; id must be unique.
+market: market-11
+contractVersion: 1
+unit: one hidden coordination case
+columns:
+  case_id:
+    type: str
+    description: Case id
+  label_positive:
+    type: bool
+    description: Hidden coordination by construction
+  concealed:
+    type: bool
+    description: Adversarially concealed subset
+  mechanism:
+    type: str
+    description: Hidden-coordination mechanism, if any
+  score:
+    type: number
+    description: Detector score
+  called_positive:
+    type: bool
+    description: Detector called coordination
+cases:
+  unit: one hidden coordination case
+  fields:
+    label_positive:
+      type: bool
+      description: ''
+    concealed:
+      type: bool
+      description: ''
+    mechanism:
+      type: str
+      description: ''
+      optional: true
+results:
+  fields:
+    score:
+      type: number
+      description: ''
+    called_positive:
+      type: bool
+      description: ''

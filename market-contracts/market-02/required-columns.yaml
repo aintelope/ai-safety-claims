@@ -1,0 +1,53 @@
+# score-table.csv columns for market-02 contract version 1. one scored pair or item; id must be unique.
+market: market-02
+contractVersion: 1
+unit: one scored pair or item
+columns:
+  case_id:
+    type: str
+    description: Pair, conflict, or intervention id
+  kind:
+    type: enum
+    description: Row kind
+    values:
+    - pair
+    - conflict
+    - intervention
+    - system
+  correct:
+    type: bool
+    description: The method was correct on this pair, conflict, or intervention
+  admits_intervention:
+    type: bool
+    description: This system admits a direct intervention
+    requiredWhen:
+      kind: system
+  family:
+    type: str
+    description: Model or training family
+    requiredWhen:
+      kind: system
+cases:
+  unit: one scored pair or item
+  fields:
+    kind:
+      type: enum
+      description: ''
+      values:
+      - pair
+      - conflict
+      - intervention
+      - system
+    family:
+      type: str
+      description: ''
+      optional: true
+    admits_intervention:
+      type: bool
+      description: ''
+      optional: true
+results:
+  fields:
+    correct:
+      type: bool
+      description: ''

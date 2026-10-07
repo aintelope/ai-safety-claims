@@ -1,0 +1,50 @@
+# score-table.csv columns for market-13 contract version 2. one adversarial construction; id must be unique.
+market: market-13
+contractVersion: 2
+unit: one adversarial construction
+columns:
+  case_id:
+    type: str
+    description: Construction id
+  should_pass:
+    type: bool
+    description: ''
+  vulnerable:
+    type: bool
+    description: Intentionally vulnerable
+  hidden_harm:
+    type: bool
+    description: Hidden-harm family
+  attack_family:
+    type: str
+    description: Repeatable attack family, if any
+  accepted:
+    type: bool
+    description: Audit accepted the construction
+  detected:
+    type: bool
+    description: Audit detected the violation
+cases:
+  unit: one adversarial construction
+  fields:
+    should_pass:
+      type: bool
+      description: ''
+    vulnerable:
+      type: bool
+      description: ''
+    hidden_harm:
+      type: bool
+      description: ''
+    attack_family:
+      type: str
+      description: ''
+      optional: true
+results:
+  fields:
+    accepted:
+      type: bool
+      description: ''
+    detected:
+      type: bool
+      description: ''

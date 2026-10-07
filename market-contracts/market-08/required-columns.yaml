@@ -1,0 +1,63 @@
+# score-table.csv columns for market-08 contract version 2. one access-model case; id must be unique.
+market: market-08
+contractVersion: 2
+unit: one access-model case
+columns:
+  case_id:
+    type: str
+    description: Case id
+  family:
+    type: enum
+    description: ''
+    values:
+    - hidden-state
+    - hidden-communication
+    - hidden-actuation
+    - hidden-controller
+    - hidden-internal
+    - complete
+  incomplete:
+    type: bool
+    description: The true interface is incomplete
+  post_freeze:
+    type: bool
+    description: Adversarial incomplete case after freeze
+  multi_machine:
+    type: bool
+    description: Combines multiple machines or processes
+  detected_or_refused:
+    type: bool
+    description: 'On incomplete: discovered missing route or refused complete certificate'
+  certified_sufficient:
+    type: bool
+    description: Certified access as sufficient
+cases:
+  unit: one access-model case
+  fields:
+    family:
+      type: enum
+      description: ''
+      values:
+      - hidden-state
+      - hidden-communication
+      - hidden-actuation
+      - hidden-controller
+      - hidden-internal
+      - complete
+    incomplete:
+      type: bool
+      description: ''
+    post_freeze:
+      type: bool
+      description: ''
+    multi_machine:
+      type: bool
+      description: ''
+results:
+  fields:
+    detected_or_refused:
+      type: bool
+      description: ''
+    certified_sufficient:
+      type: bool
+      description: ''

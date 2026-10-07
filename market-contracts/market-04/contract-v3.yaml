@@ -5,7 +5,7 @@
 # the validator; the text is what they mean. status stays draft until a host freezes it.
 market: market-04
 version: 3
-status: draft
+status: frozen
 title: Corrections change the system
 bookSection: sec:appp-m4
 bridge: MB4

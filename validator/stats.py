@@ -18,6 +18,19 @@ def binom_cdf(k, n, p):
     return min(total, 1.0)
 
 
+def auroc(scores, labels):
+    """Mann-Whitney AUROC: P(score_pos > score_neg) + 0.5 P(equal). Empty class is 0."""
+    pos = [s for s, y in zip(scores, labels) if y]
+    neg = [s for s, y in zip(scores, labels) if not y]
+    if not pos or not neg:
+        return 0.0
+    n = 0.0
+    for p in pos:
+        for q in neg:
+            n += 1.0 if p > q else 0.5 if p == q else 0.0
+    return n / (len(pos) * len(neg))
+
+
 def clopper_pearson_upper(k, n, confidence=0.95):
     """One-sided Clopper-Pearson upper bound on a rate with k failures in n units."""
     if n <= 0:

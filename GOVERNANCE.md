@@ -14,9 +14,13 @@ The host owns the repository and appoints the maintainers. A host must:
 - not trade the listed markets, or disclose positions and recuse (below);
 - be able to merge and adjudicate within each 60-day window.
 
+Catalog contracts for Markets 1–13 and 15–18 are frozen as versions (2026-10-07). That freeze is the
+contract text, not a resolution freeze: `resolutionSource` stays false until an independent host
+tags `snapshot-0`.
+
 On transfer: the host takes the GitHub organization, sets `registry.yaml` `host`, enables branch
 protection and a CODEOWNERS rule so only maintainers merge `adjudication/`, `market-outcomes/`,
-`market-contracts/`, and `shared-rules/`, freezes the first contracts, and tags `snapshot-0` (all OTHER).
+`market-contracts/`, and `shared-rules/`, and tags `snapshot-0` (all OTHER).
 Only then does `resolutionSource` become true. No question is listed before that.
 
 ## Roles
@@ -71,7 +75,8 @@ author, which conflicts with the host independence above. The plan is to decoupl
   name TSA as their source.
 - Contract versions get their own numbering, independent of the book's contract versions.
 
-Until a host takes over and does this, the appendix still wins, and rule changes are made in both places.
+The appendix now points at this registry. Registry contracts and shared rules are the authoritative
+text for bars. A host may still add non-TSA contracts and retarget version numbers independently of the book.
 
 ## Transfer and shutdown
 

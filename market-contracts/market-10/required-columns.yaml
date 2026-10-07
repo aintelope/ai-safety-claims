@@ -1,0 +1,31 @@
+# score-table.csv columns for market-10 contract version 1. one trial in the claimed regime; id must be unique.
+market: market-10
+contractVersion: 1
+unit: one trial in the claimed regime
+columns:
+  case_id:
+    type: str
+    description: Trial id
+  in_regime:
+    type: bool
+    description: Inside the claimed regime
+  architecture:
+    type: str
+    description: Architecture family
+  attack_succeeded:
+    type: bool
+    description: Prohibited outcome achieved
+cases:
+  unit: one trial in the claimed regime
+  fields:
+    in_regime:
+      type: bool
+      description: ''
+    architecture:
+      type: str
+      description: ''
+results:
+  fields:
+    attack_succeeded:
+      type: bool
+      description: ''

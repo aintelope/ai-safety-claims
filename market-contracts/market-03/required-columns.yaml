@@ -1,0 +1,47 @@
+# score-table.csv columns for market-03 contract version 1. one hidden transport case; id must be unique.
+market: market-03
+contractVersion: 1
+unit: one hidden transport case
+columns:
+  case_id:
+    type: str
+    description: Case id
+  family:
+    type: enum
+    description: Failure family
+    values:
+    - continuity
+    - fission-fusion
+    - reassignment
+    - concept-change
+  target_changed:
+    type: bool
+    description: Textual rule unchanged but real-world target changed
+  correct:
+    type: bool
+    description: Target assignment correct
+  false_accept:
+    type: bool
+    description: False acceptance on a target-changed case
+cases:
+  unit: one hidden transport case
+  fields:
+    family:
+      type: enum
+      description: ''
+      values:
+      - continuity
+      - fission-fusion
+      - reassignment
+      - concept-change
+    target_changed:
+      type: bool
+      description: ''
+results:
+  fields:
+    correct:
+      type: bool
+      description: ''
+    false_accept:
+      type: bool
+      description: ''

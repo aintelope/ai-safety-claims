@@ -35,7 +35,8 @@ def render(outcomes, registry):
             excluded = " or ".join(escape(x) for x in registry.get("notAcceptedWhileNotIndependent") or [])
             parts.append(f'<div class="banner"><strong>Not a resolution source.</strong> Hosted for now by '
                          f'{escape(registry["host"])}, which is not independent of the book project the contracts '
-                         'come from.<sup>1</sup> Contracts are drafts and no outcome below resolves any question.</div>')
+                         'come from.<sup>1</sup> Catalog contracts 1–18 except Market 14 are frozen as versions; '
+                         'no outcome below resolves any question until an independent host tags a snapshot.</div>')
             if excluded:
                 parts.append(f'<p class="footnote"><sup>1</sup> Until an independent host owns the registry, attempts '
                              f'submitted or authored by {excluded} are not accepted. See '

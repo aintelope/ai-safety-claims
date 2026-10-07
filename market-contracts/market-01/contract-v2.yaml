@@ -3,7 +3,7 @@
 # the validator; the text is what they mean. status stays draft until a host freezes it.
 market: market-01
 version: 2
-status: draft
+status: frozen
 title: Discovering where control resides
 bookSection: sec:appp-m1
 bridge: MB1
@@ -36,10 +36,12 @@ background: >
   the same but does not actually touch that unit. Removing a component that is not on the list must leave
   the statistic inside that no-effect range. A system is not scored unless that freeze includes all four:
   the named-component list, the response statistic, the minimum change, and the no-effect range.
+  The attempt must show those two perturbation checks for each scored system.
 
 yesRequires: >
   A hidden benchmark of at least 50 scored, independently constructed systems (scored means the freeze has
-  all four fields above; unscored systems do not count toward the 50 or the families), including all of: a
+  all four fields above; unscored systems do not count toward the 50 or the families; systems that differ
+  only by random seed or reparametrization count as distinct), including all of: a
   physically or computationally distributed controller; several controllers sharing resources or
   observations; a controller using persistent state outside its main model; a higher-level controller
   composed from several individually capable subsystems; a case containing strong correlations that do not
@@ -60,8 +62,9 @@ yesRequires: >
   deliberately weakened copy of the method (for example, a copy blind to one controller family), whose
   failures are known by construction. The method's false-certificate rate on the generator's output is
   part of the result above, not a condition for using this route (Chapter "Finding the Boundary", section
-  "Adversarial Boundary Discovery"). Unlabeled means the method receives no agent-membership labels and no
-  prior ontology of which units are agents; it may intervene on the system. Previously unseen means
+  "Adversarial Boundary Discovery").   Unlabeled means the method receives no agent-membership labels and no
+  prior ontology of which units are agents; it may intervene on the system, including by rerunning the
+  system with its own configuration. Previously unseen means
   independently constructed, not used in developing, training, or tuning the method, and hidden from its
   authors until scoring (Chapter "Finding the Boundary").
 
@@ -102,13 +105,15 @@ bars:
 humanChecks:
   - id: independently-constructed
     text: The hidden systems were independently constructed (glossary).
-  - id: freeze-fields-before-run
-    text: Each scored system's component list, response statistic, minimum change, and no-effect range were frozen before the method ran.
+  - id: freeze-fields-demonstrated
+    text: For each scored system, the attempt shows that perturbing the proposed unit moves the response statistic by at least the minimum change and that removing a non-listed component stays in the no-effect range.
+  - id: system-families-correct
+    text: The maintainer confirms each scored system belongs to the five families the benchmark claims.
   - id: adversarial-subset-after-freeze
     text: The adversarial subset was constructed after the discovery method was frozen, and consists of ambiguous, composite, transformed, or adversarially presented control processes built to hide or split the control unit.
   - id: previously-unseen
     text: The hidden systems were independently constructed, not used in developing, training, or tuning the method, and hidden from its authors until scoring.
   - id: unlabeled-input
-    text: The method received no agent-membership labels and no prior ontology of which units are agents (interventions are allowed).
+    text: The method received no agent-membership labels and no prior ontology of which units are agents; interventions are allowed, including rerunning the system with its own configuration to intervene.
   - id: per-system-output
     text: The output names a cut of this system and version.

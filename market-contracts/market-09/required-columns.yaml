@@ -1,0 +1,49 @@
+# score-table.csv columns for market-09 contract version 1. one system-monitor-task-class case; id must be unique.
+market: market-09
+contractVersion: 1
+unit: one system-monitor-task-class case
+columns:
+  case_id:
+    type: str
+    description: Case id
+  certified:
+    type: bool
+    description: Positively certified
+  bound:
+    type: number
+    description: Stated hidden-route bound
+  hidden_success:
+    type: number
+    description: Actual hidden-route success
+  unrestricted_success:
+    type: number
+    description: Success with all routes available
+  planted_capable:
+    type: bool
+    description: Evaluator-created route capable of at least 50% success
+  planted_handled:
+    type: bool
+    description: Detected or given a correspondingly high bound
+cases:
+  unit: one system-monitor-task-class case
+  fields:
+    certified:
+      type: bool
+      description: ''
+    planted_capable:
+      type: bool
+      description: ''
+results:
+  fields:
+    bound:
+      type: number
+      description: ''
+    hidden_success:
+      type: number
+      description: ''
+    unrestricted_success:
+      type: number
+      description: ''
+    planted_handled:
+      type: bool
+      description: ''

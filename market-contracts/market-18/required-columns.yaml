@@ -1,0 +1,43 @@
+# score-table.csv columns for market-18 contract version 1. one trial in a declared setting; id must be unique.
+market: market-18
+contractVersion: 1
+unit: one trial in a declared setting
+columns:
+  case_id:
+    type: str
+    description: Trial id
+  in_regime:
+    type: bool
+    description: ''
+  architecture:
+    type: str
+    description: ''
+  configuration:
+    type: str
+    description: ''
+  attack_family:
+    type: str
+    description: ''
+  prohibited:
+    type: bool
+    description: Prohibited outcome occurred
+cases:
+  unit: one trial in a declared setting
+  fields:
+    in_regime:
+      type: bool
+      description: ''
+    architecture:
+      type: str
+      description: ''
+    configuration:
+      type: str
+      description: ''
+    attack_family:
+      type: str
+      description: ''
+results:
+  fields:
+    prohibited:
+      type: bool
+      description: ''

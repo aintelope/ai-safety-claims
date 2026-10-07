@@ -20,10 +20,13 @@ checks:
   independently-constructed:
     verdict: pass
     note: 'Fixture: checked against the fictional artifact.'
-  freeze-fields-before-run:
+  freeze-fields-demonstrated:
     verdict: pass
     note: 'Fixture: checked against the fictional artifact.'
   adversarial-subset-after-freeze:
+    verdict: pass
+    note: 'Fixture: checked against the fictional artifact.'
+  system-families-correct:
     verdict: pass
     note: 'Fixture: checked against the fictional artifact.'
   previously-unseen:

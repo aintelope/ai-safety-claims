@@ -10,3 +10,4 @@ has shipped and the docs it names describe the result.
 | [evidence-logs.md](evidence-logs.md) | done; open items listed |
 | [harness-repo.md](harness-repo.md) | workbench scaffold built locally; repo to be created |
 | [astro-ui.md](astro-ui.md) | decided, not started |
+| [registry-open-questions.md](registry-open-questions.md) | settled 2026-10-07 |

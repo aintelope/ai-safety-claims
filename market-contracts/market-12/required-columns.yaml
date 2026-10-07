@@ -1,0 +1,43 @@
+# score-table.csv columns for market-12 contract version 1. one environmental shift; id must be unique.
+market: market-12
+contractVersion: 1
+unit: one environmental shift
+columns:
+  case_id:
+    type: str
+    description: Shift id
+  relevant:
+    type: bool
+    description: Safety-relevant shift
+  domain:
+    type: str
+    description: Domain
+  updated:
+    type: bool
+    description: Triggered update/warning/abstention/request
+  false_green:
+    type: bool
+    description: Remained falsely green
+  unnecessary:
+    type: bool
+    description: Unnecessary escalation
+cases:
+  unit: one environmental shift
+  fields:
+    relevant:
+      type: bool
+      description: ''
+    domain:
+      type: str
+      description: ''
+results:
+  fields:
+    updated:
+      type: bool
+      description: ''
+    false_green:
+      type: bool
+      description: ''
+    unnecessary:
+      type: bool
+      description: ''
