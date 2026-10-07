@@ -21,6 +21,11 @@ const commonChecks = [
 const columns = Object.entries(contract.scoreTable.columns ?? {});
 const sketches = sketchesFor(market.market);
 const links = contract.bookLinks ?? {};
+const result = contract.outcome;
+const attempts = result?.attempts ?? [];
+const qualifying = attempts.filter((a: any) => a.qualifying).length;
+const outcomeFile = `market-outcomes/${contract.market}-v${contract.version}.json`;
+const resolving = data.registry.resolutionSource;
 const sections = [
   ["question", "Question"], ["outcomes", "Outcomes"], ["background", "Background"], ["yes-requires", "YES requires"],
   ["output", "Required output"], ["qualification", "Qualification thresholds"], ["bars", "Performance bars"],
@@ -38,6 +43,26 @@ const sections = [
     : <code>{contract.bookSection}</code>}</span>
   {links.marketCard && <span><a href={links.marketCard}>Market card</a></span>}
 </p>
+
+{result && (
+  <div class="result">
+    <div class="result-main">
+      <span class="muted">Current outcome</span>
+      <span class={`result-value ${result.outcome}`}>{result.outcome}</span>
+      <span>{result.reason.replace(/-/g, " ")}</span>
+    </div>
+    <p>
+      {attempts.length} attempt{attempts.length === 1 ? "" : "s"} filed, {qualifying} qualifying. Evidence cutoff
+      {" "}{result.evidenceCutoff}; filing window closes {result.windowCloses}.
+      {" "}Read from <a href={source(outcomeFile)}><code>{outcomeFile}</code></a>{" "}
+      {resolving
+        ? <>at this site's commit; a market resolves on that file at its snapshot tag.</>
+        : <>at this site's commit. <strong>Not a resolution source yet</strong>: no market resolves on it until an
+            independent host tags a snapshot.</>}
+      {" "}<a href="#outcome">Attempts and details</a>.
+    </p>
+  </div>
+)}
 
 <div class="cite">
   {latestView
