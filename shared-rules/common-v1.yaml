@@ -16,6 +16,14 @@ threeWayRule:
     A published evaluation that meets the common qualification, that market's sample-size,
     family-coverage, freeze, and adversarial-budget thresholds, and that reports the required outputs
     even if the performance rates miss.
+  exercisedBars: >
+    A qualifying attempt must also exercise every bar. Where a bar's rate is computed over cases the
+    evaluation design supplies (fake corrections, negative controls, a required case or family), at least
+    one such case must be scored; an attempt with none is not qualifying, because that bar was never
+    tested, and it is not a NO. Where the denominator is the method's own output, such as the certificates
+    it chose to issue, an empty denominator is a missed bar.
+  # Contracts mark the first kind with exercisedBy on the bar; the validator turns each into a qualification
+  # check named exercised:<bar id>.
 
 commonQualification:
   # Condensed rules every market's fine print repeats verbatim (Appendix H, Common qualification).
@@ -122,6 +130,26 @@ wrapping:
     Anyone, the maintainer included, may file a wrapped attempt for a publication whose authors did not
     submit. The submitter slug names the filer. Freeze order is checked against the paper's own dated
     freeze. TSA files wrapped attempts only for work it did not author or fund.
+
+evidence:
+  # Registry rule (not in Appendix H): the score table is a summary that the validator re-derives.
+  text: >
+    Every attempt carries its evidence, not only a link to it. freeze.yaml records what was fixed before
+    scoring (method, code commit, scorer) and is committed before the run. freeze-cases.jsonl holds one
+    frozen case per line with the sha256 of its content. trials.jsonl holds one record per trial in the
+    registry's format, naming the frozen case it ran; the validator derives the score table from the cases
+    and trials and rejects a table that disagrees, and every trial of a run attempt starts after the
+    freeze. The raw log is whatever the harness wrote, in any format; raw-log/ keeps it whole up to
+    maxLocalLogBytes, otherwise its first and last excerptBytes, and attempt.yaml rawLog pins the full file
+    by sha256 and url. A wrapped attempt adds adapter/: the released data's hash and the script that
+    produced its evidence files, which a maintainer reruns.
+  hiddenSuites: >
+    A hidden suite's cases are hashes only. Before scoring, the challenge operator commits
+    challenge-runs/<run>/freeze-cases.jsonl with each case's id, hash, and public fields; fields the
+    contract marks withholdable are left out and never published. Values that need them come from the
+    operator's scorer.
+  maxLocalLogBytes: 2000000
+  excerptBytes: 1000000
 
 statistics:
   unitRule: >

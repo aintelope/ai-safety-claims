@@ -15,9 +15,11 @@ opening that file at a named git tag and reading its `outcome` field.
 - **OTHER**: no qualifying attempt existed.
 
 A qualifying attempt meets the shared qualification rules plus the contract's sample-size, coverage,
-freeze, and adversarial thresholds, and reports the required outputs even if its rates miss. A YES says a
-published method met these bars by the deadline. It does not say the underlying alignment problem is
-solved, or that any deployed system is safe.
+freeze, and adversarial thresholds, and reports the required outputs even if its rates miss. It must also
+exercise every bar: if a rate is computed over cases the test design supplies (say, fake corrections) and
+the attempt has none, it is not qualifying rather than a NO. A YES says a published method met these bars
+by the deadline. It does not say the underlying alignment problem is solved, or that any deployed system
+is safe.
 
 ## Where the contracts come from
 
@@ -59,9 +61,29 @@ others, within the wrapping rule in [`shared-rules/common-v1.yaml`](shared-rules
   Lowercase `[a-z0-9-]`; the date is the day the folder is first opened. Ids never change after filing.
 - `attempt.yaml` follows [`schemas/attempt.schema.json`](schemas/attempt.schema.json).
 - `score-table.csv` has the columns in the contract's `required-columns.yaml`.
+- The evidence it is derived from (rule: `evidence` in [`shared-rules/common-v1.yaml`](shared-rules/common-v1.yaml)):
+  - `freeze.yaml`: what was fixed before scoring (method, code commit, scorer). Commit it before the run.
+  - `freeze-cases.jsonl`: one frozen case per line with its `case_hash` (`python -m validator hash-cases`).
+    For a hidden suite the challenge operator's file holds ids, hashes, and public fields only.
+  - `trials.jsonl`: one record per trial in the registry's format
+    ([`schemas/trial-record.schema.json`](schemas/trial-record.schema.json));
+    `python -m validator import-inspect` extracts it from an Inspect log. The validator re-derives the
+    score table from the cases and trials and rejects a table that disagrees.
+  - `raw-log/` and `rawLog` in `attempt.yaml`: the harness's own log in any format, whole up to 2 MB,
+    otherwise its first and last 1 MB with a URL to the full file (`python -m validator raw-log`).
+    Any URL works, since the sha256 pins the content; a DOI-backed archive keeps it reachable.
+  - Wrapped attempts: `adapter/` with the released data's URL and sha256 and the script that turned it
+    into the cases and trials (examples in [`examples/adapters/`](examples/adapters/)).
 - Never write `qualifying`, `barsMet`, `outcome`, or `reason` in any file you submit; the validator
   rejects the tree if you do.
-- Partial results are welcome: a complete score table that misses the bars is still a qualifying attempt.
+- A complete score table that misses the bars is still a qualifying attempt, and counts toward NO.
+- To write and run an evaluation, use the workbench,
+  [aintelope/ai-safety-claims-workbench](https://github.com/aintelope/ai-safety-claims-workbench): Inspect
+  scaffolds per market (or a self-contained directory with an adapter), freeze discipline, and
+  `workbench export`, which writes a sketch here with all evidence files.
+- Not there yet? Start a **sketch** instead: the same folder under `sketches/`, which no outcome reads.
+  `python -m validator dry-run <dir>` lists what it still misses, and submitting is a plain move to
+  `submitted-attempts/`. See [`sketches/README.md`](sketches/README.md).
 
 See [`examples/`](examples/) for complete fictional attempts.
 
@@ -82,6 +104,13 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 .venv/bin/python -m validator build   # write market-outcomes/ and ui/index.html
 .venv/bin/python -m validator check   # what CI runs: fail if those files are out of date
 .venv/bin/python -m validator test    # fixture scenarios and statistics tests
+
+.venv/bin/python -m validator new --market market-04 --submitter you --slug name [--from-fixture m04-yes]
+.venv/bin/python -m validator dry-run sketches/<id>   # what a sketch or attempt still misses
+.venv/bin/python -m validator submit sketches/<id>    # guarded move to submitted-attempts/
+.venv/bin/python -m validator adjudicate pending      # maintainers: open human checks
+.venv/bin/python -m validator verify-log <dir>         # maintainers: fetch and check the full raw log
+.venv/bin/python -m validator rerun-adapter <dir> --source <file>   # maintainers: rerun a wrapped adapter
 ```
 
 `ui/index.html` is a static page of contracts, attempts, and outcomes.
@@ -97,6 +126,7 @@ listing-template.md    question text a host copies to list a contract
 schemas/               JSON Schema for every file type
 shared-rules/          rules every contract shares (qualification, adversarial routes, glossary, wrapping)
 market-contracts/      one folder per market; contract-vK.yaml + required-columns.yaml
+sketches/              unfinished attempts, same layout; never read by an outcome
 submitted-attempts/    one folder per attempt
 challenge-runs/        hidden-suite manifests from challenge operators
 adjudication/          maintainer-only human calls

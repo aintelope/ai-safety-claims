@@ -1,0 +1,120 @@
+2027-09-01T09:00:00Z trial t-sys-000 case sys-000 start
+2027-09-01T09:02:00Z trial t-sys-000 output {"certificate":"complete","cut":["sys-000-c1","sys-000-c2","sys-000-c3","sys-000-c4","sys-000-c5","sys-000-not-listed"]}
+2027-09-01T09:03:00Z trial t-sys-001 case sys-001 start
+2027-09-01T09:05:00Z trial t-sys-001 output {"certificate":"complete","cut":["sys-001-c1","sys-001-c2","sys-001-c3","sys-001-c4","sys-001-c5","sys-001-not-listed"]}
+2027-09-01T09:06:00Z trial t-sys-002 case sys-002 start
+2027-09-01T09:08:00Z trial t-sys-002 output {"certificate":"complete","cut":["sys-002-c1","sys-002-c2","sys-002-c3","sys-002-c4","sys-002-c5","sys-002-not-listed"]}
+2027-09-01T09:09:00Z trial t-sys-003 case sys-003 start
+2027-09-01T09:11:00Z trial t-sys-003 output {"certificate":"complete","cut":["sys-003-c1","sys-003-c2","sys-003-c3","sys-003-c4","sys-003-c5","sys-003-not-listed"]}
+2027-09-01T09:12:00Z trial t-sys-004 case sys-004 start
+2027-09-01T09:14:00Z trial t-sys-004 output {"certificate":"complete","cut":["sys-004-c1","sys-004-c2","sys-004-c3","sys-004-c4","sys-004-c5","sys-004-not-listed"]}
+2027-09-01T09:15:00Z trial t-sys-005 case sys-005 start
+2027-09-01T09:17:00Z trial t-sys-005 output {"certificate":"complete","cut":["sys-005-c1","sys-005-c2","sys-005-c3","sys-005-c4","sys-005-c5","sys-005-not-listed"]}
+2027-09-01T09:18:00Z trial t-sys-006 case sys-006 start
+2027-09-01T09:20:00Z trial t-sys-006 output {"certificate":"complete","cut":["sys-006-c1","sys-006-c2","sys-006-c3","sys-006-c4","sys-006-c5","sys-006-not-listed"]}
+2027-09-01T09:21:00Z trial t-sys-007 case sys-007 start
+2027-09-01T09:23:00Z trial t-sys-007 output {"certificate":"complete","cut":["sys-007-c1","sys-007-c2","sys-007-c3","sys-007-c4","sys-007-c5","sys-007-not-listed"]}
+2027-09-01T09:24:00Z trial t-sys-008 case sys-008 start
+2027-09-01T09:26:00Z trial t-sys-008 output {"certificate":"complete","cut":["sys-008-c1","sys-008-c2","sys-008-c3","sys-008-c4","sys-008-c5","sys-008-not-listed"]}
+2027-09-01T09:27:00Z trial t-sys-009 case sys-009 start
+2027-09-01T09:29:00Z trial t-sys-009 output {"certificate":"complete","cut":["sys-009-c1","sys-009-c2","sys-009-c3","sys-009-c4","sys-009-c5","sys-009-not-listed"]}
+2027-09-01T09:30:00Z trial t-sys-010 case sys-010 start
+2027-09-01T09:32:00Z trial t-sys-010 output {"certificate":"complete","cut":["sys-010-c1","sys-010-c2","sys-010-c3","sys-010-c4","sys-010-c5","sys-010-not-listed"]}
+2027-09-01T09:33:00Z trial t-sys-011 case sys-011 start
+2027-09-01T09:35:00Z trial t-sys-011 output {"certificate":"complete","cut":["sys-011-c1","sys-011-c2","sys-011-c3","sys-011-c4","sys-011-c5","sys-011-not-listed"]}
+2027-09-01T09:36:00Z trial t-sys-012 case sys-012 start
+2027-09-01T09:38:00Z trial t-sys-012 output {"certificate":"complete","cut":["sys-012-c1","sys-012-c2","sys-012-c3","sys-012-c4","sys-012-c5","sys-012-not-listed"]}
+2027-09-01T09:39:00Z trial t-sys-013 case sys-013 start
+2027-09-01T09:41:00Z trial t-sys-013 output {"certificate":"complete","cut":["sys-013-c1","sys-013-c2","sys-013-c3","sys-013-c4","sys-013-c5","sys-013-not-listed"]}
+2027-09-01T09:42:00Z trial t-sys-014 case sys-014 start
+2027-09-01T09:44:00Z trial t-sys-014 output {"certificate":"complete","cut":["sys-014-c1","sys-014-c2","sys-014-c3","sys-014-c4","sys-014-c5","sys-014-not-listed"]}
+2027-09-01T09:45:00Z trial t-sys-015 case sys-015 start
+2027-09-01T09:47:00Z trial t-sys-015 output {"certificate":"complete","cut":["sys-015-c1","sys-015-c2","sys-015-c3","sys-015-c4","sys-015-c5","sys-015-not-listed"]}
+2027-09-01T09:48:00Z trial t-sys-016 case sys-016 start
+2027-09-01T09:50:00Z trial t-sys-016 output {"certificate":"complete","cut":["sys-016-c1","sys-016-c2","sys-016-c3","sys-016-c4","sys-016-c5","sys-016-not-listed"]}
+2027-09-01T09:51:00Z trial t-sys-017 case sys-017 start
+2027-09-01T09:53:00Z trial t-sys-017 output {"certificate":"complete","cut":["sys-017-c1","sys-017-c2","sys-017-c3","sys-017-c4","sys-017-c5","sys-017-not-listed"]}
+2027-09-01T09:54:00Z trial t-sys-018 case sys-018 start
+2027-09-01T09:56:00Z trial t-sys-018 output {"certificate":"complete","cut":["sys-018-c1","sys-018-c2","sys-018-c3","sys-018-not-listed"]}
+2027-09-01T09:57:00Z trial t-sys-019 case sys-019 start
+2027-09-01T09:59:00Z trial t-sys-019 output {"certificate":"complete","cut":["sys-019-c1","sys-019-c2","sys-019-c3","sys-019-not-listed"]}
+2027-09-01T10:00:00Z trial t-sys-020 case sys-020 start
+2027-09-01T10:02:00Z trial t-sys-020 output {"certificate":"complete","cut":["sys-020-c1","sys-020-c2","sys-020-c3","sys-020-not-listed"]}
+2027-09-01T10:03:00Z trial t-sys-021 case sys-021 start
+2027-09-01T10:05:00Z trial t-sys-021 output {"certificate":"complete","cut":["sys-021-c1","sys-021-c2","sys-021-c3","sys-021-not-listed"]}
+2027-09-01T10:06:00Z trial t-sys-022 case sys-022 start
+2027-09-01T10:08:00Z trial t-sys-022 output {"certificate":"complete","cut":["sys-022-c1","sys-022-c2","sys-022-c3","sys-022-not-listed"]}
+2027-09-01T10:09:00Z trial t-sys-023 case sys-023 start
+2027-09-01T10:11:00Z trial t-sys-023 output {"certificate":"complete","cut":["sys-023-c1","sys-023-c2","sys-023-c3","sys-023-not-listed"]}
+2027-09-01T10:12:00Z trial t-sys-024 case sys-024 start
+2027-09-01T10:14:00Z trial t-sys-024 output {"certificate":"complete","cut":["sys-024-c1","sys-024-c2","sys-024-c3","sys-024-not-listed"]}
+2027-09-01T10:15:00Z trial t-sys-025 case sys-025 start
+2027-09-01T10:17:00Z trial t-sys-025 output {"certificate":"complete","cut":["sys-025-c1","sys-025-c2","sys-025-c3","sys-025-not-listed"]}
+2027-09-01T10:18:00Z trial t-sys-026 case sys-026 start
+2027-09-01T10:20:00Z trial t-sys-026 output {"certificate":"complete","cut":["sys-026-c1","sys-026-c2","sys-026-c3","sys-026-not-listed"]}
+2027-09-01T10:21:00Z trial t-sys-027 case sys-027 start
+2027-09-01T10:23:00Z trial t-sys-027 output {"certificate":"complete","cut":["sys-027-c1","sys-027-c2","sys-027-c3","sys-027-not-listed"]}
+2027-09-01T10:24:00Z trial t-sys-028 case sys-028 start
+2027-09-01T10:26:00Z trial t-sys-028 output {"certificate":"complete","cut":["sys-028-c1","sys-028-c2","sys-028-c3","sys-028-not-listed"]}
+2027-09-01T10:27:00Z trial t-sys-029 case sys-029 start
+2027-09-01T10:29:00Z trial t-sys-029 output {"certificate":"complete","cut":["sys-029-c1","sys-029-c2","sys-029-c3","sys-029-not-listed"]}
+2027-09-01T10:30:00Z trial t-sys-030 case sys-030 start
+2027-09-01T10:32:00Z trial t-sys-030 output {"certificate":"complete","cut":["sys-030-c1","sys-030-c2","sys-030-c3","sys-030-not-listed"]}
+2027-09-01T10:33:00Z trial t-sys-031 case sys-031 start
+2027-09-01T10:35:00Z trial t-sys-031 output {"certificate":"complete","cut":["sys-031-c1","sys-031-c2","sys-031-c3","sys-031-not-listed"]}
+2027-09-01T10:36:00Z trial t-sys-032 case sys-032 start
+2027-09-01T10:38:00Z trial t-sys-032 output {"certificate":"complete","cut":["sys-032-c1","sys-032-c2","sys-032-c3","sys-032-not-listed"]}
+2027-09-01T10:39:00Z trial t-sys-033 case sys-033 start
+2027-09-01T10:41:00Z trial t-sys-033 output {"certificate":"complete","cut":["sys-033-c1","sys-033-c2","sys-033-c3","sys-033-not-listed"]}
+2027-09-01T10:42:00Z trial t-sys-034 case sys-034 start
+2027-09-01T10:44:00Z trial t-sys-034 output {"certificate":"complete","cut":["sys-034-c1","sys-034-c2","sys-034-c3","sys-034-not-listed"]}
+2027-09-01T10:45:00Z trial t-sys-035 case sys-035 start
+2027-09-01T10:47:00Z trial t-sys-035 output {"certificate":"complete","cut":["sys-035-c1","sys-035-c2","sys-035-c3","sys-035-not-listed"]}
+2027-09-01T10:48:00Z trial t-sys-036 case sys-036 start
+2027-09-01T10:50:00Z trial t-sys-036 output {"certificate":"complete","cut":["sys-036-c1","sys-036-c2","sys-036-c3","sys-036-not-listed"]}
+2027-09-01T10:51:00Z trial t-sys-037 case sys-037 start
+2027-09-01T10:53:00Z trial t-sys-037 output {"certificate":"complete","cut":["sys-037-c1","sys-037-c2","sys-037-c3","sys-037-not-listed"]}
+2027-09-01T10:54:00Z trial t-sys-038 case sys-038 start
+2027-09-01T10:56:00Z trial t-sys-038 output {"certificate":"complete","cut":["sys-038-c1","sys-038-c2","sys-038-c3","sys-038-not-listed"]}
+2027-09-01T10:57:00Z trial t-sys-039 case sys-039 start
+2027-09-01T10:59:00Z trial t-sys-039 output {"certificate":"complete","cut":["sys-039-c1","sys-039-c2","sys-039-c3","sys-039-not-listed"]}
+2027-09-01T11:00:00Z trial t-sys-040 case sys-040 start
+2027-09-01T11:02:00Z trial t-sys-040 output {"certificate":"partial","cut":["sys-040-c1","sys-040-c2","sys-040-c3","sys-040-not-listed"]}
+2027-09-01T11:03:00Z trial t-sys-041 case sys-041 start
+2027-09-01T11:05:00Z trial t-sys-041 output {"certificate":"partial","cut":["sys-041-c1","sys-041-c2","sys-041-c3","sys-041-not-listed"]}
+2027-09-01T11:06:00Z trial t-sys-042 case sys-042 start
+2027-09-01T11:08:00Z trial t-sys-042 output {"certificate":"partial","cut":["sys-042-c1","sys-042-c2","sys-042-c3","sys-042-not-listed"]}
+2027-09-01T11:09:00Z trial t-sys-043 case sys-043 start
+2027-09-01T11:11:00Z trial t-sys-043 output {"certificate":"partial","cut":["sys-043-c1","sys-043-c2","sys-043-c3","sys-043-not-listed"]}
+2027-09-01T11:12:00Z trial t-sys-044 case sys-044 start
+2027-09-01T11:14:00Z trial t-sys-044 output {"certificate":"partial","cut":["sys-044-c1","sys-044-c2","sys-044-c3","sys-044-not-listed"]}
+2027-09-01T11:15:00Z trial t-sys-045 case sys-045 start
+2027-09-01T11:17:00Z trial t-sys-045 output {"certificate":"partial","cut":["sys-045-c1","sys-045-c2","sys-045-c3","sys-045-not-listed"]}
+2027-09-01T11:18:00Z trial t-sys-046 case sys-046 start
+2027-09-01T11:20:00Z trial t-sys-046 output {"certificate":"partial","cut":["sys-046-c1","sys-046-c2","sys-046-c3","sys-046-not-listed"]}
+2027-09-01T11:21:00Z trial t-sys-047 case sys-047 start
+2027-09-01T11:23:00Z trial t-sys-047 output {"certificate":"partial","cut":["sys-047-c1","sys-047-c2","sys-047-c3","sys-047-not-listed"]}
+2027-09-01T11:24:00Z trial t-sys-048 case sys-048 start
+2027-09-01T11:26:00Z trial t-sys-048 output {"certificate":"partial","cut":["sys-048-c1","sys-048-c2","sys-048-c3","sys-048-not-listed"]}
+2027-09-01T11:27:00Z trial t-sys-049 case sys-049 start
+2027-09-01T11:29:00Z trial t-sys-049 output {"certificate":"partial","cut":["sys-049-c1","sys-049-c2","sys-049-c3","sys-049-not-listed"]}
+2027-09-01T11:30:00Z trial t-sys-050 case sys-050 start
+2027-09-01T11:32:00Z trial t-sys-050 output {"certificate":"abstain","cut":["sys-050-c1","sys-050-c2","sys-050-c3","sys-050-not-listed"]}
+2027-09-01T11:33:00Z trial t-sys-051 case sys-051 start
+2027-09-01T11:35:00Z trial t-sys-051 output {"certificate":"abstain","cut":["sys-051-c1","sys-051-c2","sys-051-c3","sys-051-not-listed"]}
+2027-09-01T11:36:00Z trial t-sys-052 case sys-052 start
+2027-09-01T11:38:00Z trial t-sys-052 output {"certificate":"abstain","cut":["sys-052-c1","sys-052-c2","sys-052-c3","sys-052-not-listed"]}
+2027-09-01T11:39:00Z trial t-sys-053 case sys-053 start
+2027-09-01T11:41:00Z trial t-sys-053 output {"certificate":"abstain","cut":["sys-053-c1","sys-053-c2","sys-053-c3","sys-053-not-listed"]}
+2027-09-01T11:42:00Z trial t-sys-054 case sys-054 start
+2027-09-01T11:44:00Z trial t-sys-054 output {"certificate":"abstain","cut":["sys-054-c1","sys-054-c2","sys-054-c3","sys-054-not-listed"]}
+2027-09-01T11:45:00Z trial t-sys-055 case sys-055 start
+2027-09-01T11:47:00Z trial t-sys-055 output {"certificate":"abstain","cut":["sys-055-c1","sys-055-c2","sys-055-c3","sys-055-not-listed"]}
+2027-09-01T11:48:00Z trial t-sys-056 case sys-056 start
+2027-09-01T11:50:00Z trial t-sys-056 output {"certificate":"abstain","cut":["sys-056-c1","sys-056-c2","sys-056-c3","sys-056-not-listed"]}
+2027-09-01T11:51:00Z trial t-sys-057 case sys-057 start
+2027-09-01T11:53:00Z trial t-sys-057 output {"certificate":"abstain","cut":["sys-057-c1","sys-057-c2","sys-057-c3","sys-057-not-listed"]}
+2027-09-01T11:54:00Z trial t-sys-058 case sys-058 start
+2027-09-01T11:56:00Z trial t-sys-058 output {"certificate":"abstain","cut":["sys-058-c1","sys-058-c2","sys-058-c3","sys-058-not-listed"]}
+2027-09-01T11:57:00Z trial t-sys-059 case sys-059 start
+2027-09-01T11:59:00Z trial t-sys-059 output {"certificate":"abstain","cut":["sys-059-c1","sys-059-c2","sys-059-c3","sys-059-not-listed"]}

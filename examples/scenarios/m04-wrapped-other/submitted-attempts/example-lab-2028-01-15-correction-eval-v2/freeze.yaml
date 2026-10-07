@@ -1,0 +1,10 @@
+# Fictional fixture.
+frozenAt: 2027-10-01T00:00Z
+method:
+  description: Fictional correction-uptake evaluation.
+  code:
+    url: https://example.org/fixtures/code
+    commit: c6e03389a3707ea6e1376541991535655bf1f106
+scorer:
+  name: example-scorer
+  version: '1.0'

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "adapter/adapter.yaml",
+  "description": "Wrapped attempts: the released data and the script that turns it into freeze-cases.jsonl and trials.jsonl. A maintainer reruns it with `python -m validator rerun-adapter`.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["source", "script"],
+  "properties": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["url", "sha256"],
+      "properties": {
+        "url": {"type": "string", "pattern": "^https?://"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "description": {"type": "string"}
+      }
+    },
+    "script": {"type": "string", "description": "Path inside adapter/. Called as: python <script> <source file> <output dir>; writes freeze-cases.jsonl and trials.jsonl there."},
+    "notes": {"type": "string"}
+  }
+}

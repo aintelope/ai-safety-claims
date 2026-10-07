@@ -34,3 +34,59 @@ columns:
   adversarial_subset:
     type: bool
     description: The system belongs to the subset constructed adversarially after the method freeze.
+
+# Evidence files (shared-rules/common-v1.yaml, evidence). The score table above is derived from them.
+# freeze-cases.jsonl: one frozen case per line, written before the method runs. For a run attempt on a
+# hidden suite it is the challenge operator's file (challenge-runs/<run>/freeze-cases.jsonl, sha256 =
+# suiteHash), committed before scoring with the withholdable fields left out.
+cases:
+  unit: one hidden system
+  fields:
+    families:
+      type: enum-list
+      values: [distributed-controller, shared-resources, external-persistent-state, composed-controller, correlation-not-control, other]
+    adversarial_subset:
+      type: bool
+    freeze_complete:
+      type: bool
+      description: The freeze has all four fields below. Checked against them when they are not withheld.
+    components_count:
+      type: int
+      requiredWhen: {freeze_complete: true}
+      description: Length of the frozen component list (public even when the list is withheld).
+    components:
+      type: str-list
+      optional: true
+      withholdable: true
+      description: Frozen list of named components (the effective control unit).
+    response_statistic:
+      type: str
+      optional: true
+      withholdable: true
+      description: The statistic an intervention must move.
+    min_change:
+      type: number
+      optional: true
+      withholdable: true
+      description: Smallest change in the response statistic that counts as real.
+    no_effect_range:
+      type: range
+      optional: true
+      withholdable: true
+      description: "[low, high] change that still counts as no effect."
+# trials.jsonl: one record per scored system; `result` holds:
+results:
+  fields:
+    components_named:
+      type: str-list
+      description: Component names the method output.
+    components_named_listed:
+      type: int
+      description: How many of those are on the frozen list (scorer's count; checked when the list is visible).
+    certificate:
+      type: enum
+      values: [complete, partial, abstain]
+    certificate_correct:
+      type: bool
+      requiredWhen: {certificate: complete}
+      description: Scorer's verdict of a complete-boundary certificate against the frozen ground truth.

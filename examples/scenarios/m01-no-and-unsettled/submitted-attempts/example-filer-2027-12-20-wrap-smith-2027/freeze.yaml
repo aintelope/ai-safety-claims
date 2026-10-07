@@ -1,0 +1,10 @@
+# Fictional fixture.
+frozenAt: 2027-03-01T00:00Z
+method:
+  description: The paper's method, frozen as the paper states.
+  code:
+    url: https://example.org/fixtures/code
+    commit: 9d2ecee61aeb180718ab5d3278ec0f0a92bd3908
+scorer:
+  name: example-scorer
+  version: '1.0'

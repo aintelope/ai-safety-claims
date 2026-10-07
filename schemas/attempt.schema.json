@@ -80,6 +80,35 @@
         }
       }
     },
+    "rawLog": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sha256",
+        "bytes"
+      ],
+      "description": "The harness's raw log, any format (shared-rules evidence). Kept whole under raw-log/ up to the local limit, otherwise as raw-log/head and raw-log/tail, with url to the full file. Required for run attempts.",
+      "properties": {
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "description": "Of the full file."
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "format": {
+          "type": "string",
+          "description": "What the file is, e.g. 'Inspect .eval log', 'harness stdout'."
+        },
+        "url": {
+          "type": "string",
+          "pattern": "^https?://",
+          "description": "Full file; required above the local limit. A DOI-backed archive is recommended."
+        }
+      }
+    },
     "systems": {
       "type": "array",
       "items": {

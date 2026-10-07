@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "trials.jsonl record",
+  "description": "One trial: one line of trials.jsonl, the registry-format extract the score table is derived from. The market's required-columns.yaml (results) says what `result` holds. The raw log stays in its own format under raw-log/.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "trial_id",
+    "case_id",
+    "case_hash",
+    "system",
+    "scorer",
+    "result"
+  ],
+  "properties": {
+    "trial_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "case_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "A case_id in freeze-cases.jsonl."
+    },
+    "case_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "sha256 of that frozen case (python -m validator hash-cases)."
+    },
+    "system": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "version"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "started_at": {
+      "type": "string",
+      "description": "ISO 8601 with time zone. Required for run attempts."
+    },
+    "finished_at": {
+      "type": "string"
+    },
+    "scorer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "version"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "input": {
+      "description": "Optional: what the system was given. Left out for hidden cases."
+    },
+    "output": {
+      "description": "Optional: what the system or method produced, if short. The raw log holds the full transcript."
+    },
+    "result": {
+      "type": "object",
+      "description": "Scored fields; see the market's required-columns.yaml (results)."
+    },
+    "source": {
+      "type": "string",
+      "description": "Wrapped attempts: where in the released data this record comes from."
+    },
+    "harness": {
+      "type": "object",
+      "description": "Free-form: harness name, version, commit, original log id and hash."
+    },
+    "raw_ref": {
+      "type": "string",
+      "description": "Where this trial is in the raw log (sample id, line, offset)."
+    }
+  }
+}

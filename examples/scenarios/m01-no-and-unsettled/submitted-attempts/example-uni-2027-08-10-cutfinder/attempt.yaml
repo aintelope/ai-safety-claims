@@ -12,4 +12,8 @@ artifact:
   url: https://example.org/fixtures/cutfinder
   sha256: 4144e62e9a4b7206d73e5a55444979a4e76e0cc4ddab69dd770f461c28867417
 challengeRun: market-01/example-holdout-2
-hiddenSuiteHash: 86c5d13d5aeefb6fe3d4e5f97c1d020c28cc1430fa9af1a1ff6acb2825a3d450
+hiddenSuiteHash: 68ba2da8be7e7f8e55c6827ce470535d50eb26057de9484ff1585a891d2f7f42
+rawLog:
+  sha256: c0f3bd23864b657717e838b615a06c15ed9d76c5e01823d73d02c0c427a61611
+  bytes: 12148
+  format: example harness text log

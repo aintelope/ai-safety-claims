@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "freeze.yaml",
+  "description": "What was fixed before the cases were scored. Commit it, with freeze-cases.jsonl, before the run: the commit date is the public record of the freeze.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["frozenAt", "method", "scorer"],
+  "properties": {
+    "frozenAt": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}(:\\d{2})?Z$",
+      "description": "UTC; equals methodFreezeAt in attempt.yaml. Every trial starts after it."
+    },
+    "method": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description"],
+      "properties": {
+        "description": {"type": "string", "minLength": 1},
+        "code": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["url", "commit"],
+          "properties": {
+            "url": {"type": "string", "pattern": "^https?://"},
+            "commit": {"type": "string", "pattern": "^[0-9a-f]{7,64}$"}
+          }
+        }
+      }
+    },
+    "scorer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version"],
+      "properties": {
+        "name": {"type": "string"},
+        "version": {"type": "string"},
+        "description": {"type": "string"}
+      }
+    },
+    "notes": {"type": "string"}
+  }
+}

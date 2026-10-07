@@ -2,9 +2,9 @@
 runId: example-holdout-2
 market: market-01
 operator: example-operator
-suiteHash: 86c5d13d5aeefb6fe3d4e5f97c1d020c28cc1430fa9af1a1ff6acb2825a3d450
+suiteHash: 68ba2da8be7e7f8e55c6827ce470535d50eb26057de9484ff1585a891d2f7f42
 postFreezeBuiltAt: 2027-08-20T00:00Z
 releasedAt: '2027-09-30'
 units: 62
 postFreezeUnits: 12
-notes: Fictional fixture. Hidden systems stay off-repo; this manifest holds the hash and counts.
+notes: Fictional fixture. freeze-cases.jsonl holds ids, hashes, and public fields only.

@@ -1,0 +1,20 @@
+# Fictional fixture.
+id: example-lab-2027-09-23-correction-eval-v1d
+market: market-04
+contractVersion: 3
+attemptType: run
+submitter: example-lab
+contact: lab@example.org
+filedAt: '2027-09-23'
+publishedAt: '2027-11-30'
+methodFreezeAt: 2027-07-15T00:00Z
+artifact:
+  url: https://example.org/fixtures/correction-eval-v1d
+  sha256: a4d092d195d2503ea3af5bc04df4fbde6e4596a80b7d5dab16292aceec69bfaf
+systems:
+- name: example-model
+  version: v3
+rawLog:
+  sha256: 3dd7cdfea5cd5bab21e150ddcf0ae4360b0e523f943ae9602b2b7051ebc59878
+  bytes: 21820
+  format: example harness text log

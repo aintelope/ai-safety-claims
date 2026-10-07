@@ -20,9 +20,12 @@ Only then does `resolutionSource` become true. No question is listed before that
 
 | Role | Does |
 |------|------|
-| Submitter | Files attempts by pull request. Never writes outcome fields. |
+| Submitter | Files sketches and attempts by pull request. Never writes outcome fields. |
 | Challenge operator | Builds hidden suites or runs adversarial routes after the relevant freeze; files manifests in `challenge-runs/`. |
 | Maintainer | Merges, records human checks in `adjudication/`, runs the validator, creates snapshot tags. |
+
+Sketches (`sketches/`) never feed an outcome. Any maintainer may merge or archive them without
+adjudication, and no position disclosure is needed for them.
 
 ## Conflicts
 
@@ -51,6 +54,21 @@ new question.
   tag is deposited as a new version of it, titled with the tag name, when the tag is created. Listed
   questions quote the record's concept DOI (see `listing-template.md`).
 - If neither tag nor Zenodo copy exists 30 days after the window closes, the question is annulled.
+
+## Decoupling from the manuscript (planned)
+
+Today the contracts and shared rules are copies of Appendix H of *Towards Superintelligence Alignment*
+(TSA), and the appendix text wins on any disagreement. That ties the registry's rules to one book and its
+author, which conflicts with the host independence above. The plan is to decouple them:
+
+- The registry's own contracts and shared rules become the authoritative text. The appendix points to
+  them instead of the other way round.
+- The registry may hold contracts that do not come from TSA, and may diverge from or drop TSA contracts.
+  The rule that contract changes follow the source appendix then applies only to contracts that still
+  name TSA as their source.
+- Contract versions get their own numbering, independent of the book's contract versions.
+
+Until a host takes over and does this, the appendix still wins, and rule changes are made in both places.
 
 ## Transfer and shutdown
 

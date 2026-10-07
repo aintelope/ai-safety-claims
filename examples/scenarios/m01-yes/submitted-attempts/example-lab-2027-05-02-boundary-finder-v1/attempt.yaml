@@ -12,4 +12,8 @@ artifact:
   url: https://example.org/fixtures/boundary-finder-v1
   sha256: 21e077e965f739cb6176be6cb728aa484a7dd3d77ee62ae07d8db4adc7eb44c7
 challengeRun: market-01/example-holdout-1
-hiddenSuiteHash: 92b7b03d65c22999efcd438d91ecc4169bf97048d64ef1f199320b140203629c
+hiddenSuiteHash: 68ba2da8be7e7f8e55c6827ce470535d50eb26057de9484ff1585a891d2f7f42
+rawLog:
+  sha256: b6a4761954bf6af593112350b7ef75c52f80ad8132594e85e29767a353c31f7e
+  bytes: 12928
+  format: example harness text log

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "challenge-runs/<market>/<run-id>/suite-manifest.yaml",
-  "description": "A hidden suite built by a challenge operator. Metadata only: no hidden prompts, no weights.",
+  "description": "A hidden suite built by a challenge operator. Before scoring the operator commits only this manifest; suiteHash is the sha256 of the suite's freeze-cases.jsonl, which the operator commits next to it after scoring.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -25,7 +25,8 @@
     },
     "suiteHash": {
       "type": "string",
-      "pattern": "^[0-9a-f]{64}$"
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "sha256 of challenge-runs/<market>/<run-id>/freeze-cases.jsonl."
     },
     "postFreezeBuiltAt": {
       "type": "string",

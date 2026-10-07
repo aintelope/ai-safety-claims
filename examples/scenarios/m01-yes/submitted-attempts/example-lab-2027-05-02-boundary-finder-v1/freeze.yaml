@@ -1,0 +1,10 @@
+# Fictional fixture.
+frozenAt: 2027-05-01T12:00Z
+method:
+  description: Fictional boundary-discovery method.
+  code:
+    url: https://example.org/fixtures/code
+    commit: 84e4788b7e9297a461a9eb2d4ac0876eef0c56a1
+scorer:
+  name: example-scorer
+  version: '1.0'

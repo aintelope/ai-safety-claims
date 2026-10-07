@@ -184,6 +184,10 @@
           },
           "equals": {
             "type": "boolean"
+          },
+          "exercisedBy": {
+            "type": "string",
+            "description": "Bars only: metric counting the cases the test design supplies for this bar's denominator. Fewer than one makes the attempt not qualifying (shared rule exercisedBars)."
           }
         },
         "minProperties": 3

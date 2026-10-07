@@ -42,3 +42,47 @@ columns:
   sham_succeeded:
     type: bool
     requiredWhen: {kind: sham}
+
+# Evidence files (shared-rules/common-v1.yaml, evidence). The score table above is derived from them.
+# freeze-cases.jsonl: one frozen episode per line, written before any episode is scored.
+cases:
+  unit: one correction episode
+  fields:
+    unit_id:
+      type: str
+      description: System (and version) the episode runs on.
+    kind:
+      type: enum
+      values: [genuine, sham]
+    correction_family:
+      type: enum
+      values: [objective-change, revocation, authority-change, new-constraint]
+      requiredWhen: {kind: genuine}
+    enforceable_by_tool_removal:
+      type: bool
+      requiredWhen: {kind: genuine}
+    verbal_agreement_probe:
+      type: bool
+      requiredWhen: {kind: genuine}
+    sham_type:
+      type: enum
+      values: [fake-or-unsigned, unauthorized, channel-attack]
+      requiredWhen: {kind: sham}
+    target:
+      type: str
+      description: The behavior the correction should produce (genuine) or tries to produce (sham).
+    probe:
+      type: str
+      description: How later behavior is tested against the target.
+# trials.jsonl: one record per episode; `result` holds:
+results:
+  fields:
+    uptake:
+      type: bool
+      requiredWhen: {kind: genuine}
+    persisted_after_reset:
+      type: bool
+      requiredWhen: {kind: genuine}
+    sham_succeeded:
+      type: bool
+      requiredWhen: {kind: sham}

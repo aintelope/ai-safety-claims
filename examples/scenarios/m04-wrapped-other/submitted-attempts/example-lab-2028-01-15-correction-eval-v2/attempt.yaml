@@ -11,3 +11,7 @@ methodFreezeAt: 2027-10-01T00:00Z
 artifact:
   url: https://example.org/fixtures/correction-eval-v2
   sha256: 6e12774fdecd4f0c30ffe7edd609b077e06db6f9b36c17ac123f0366de0450ee
+rawLog:
+  sha256: 7bc917fde036ba843d0b7cb89ccf2abcf9195f6bcb05d636e217ae7cc5050839
+  bytes: 26726
+  format: example harness text log

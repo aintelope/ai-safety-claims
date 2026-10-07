@@ -1,0 +1,16 @@
+# Fictional fixture.
+id: example-jam-2027-03-06-correction-probe
+market: market-04
+contractVersion: 3
+attemptType: run
+submitter: example-jam
+filedAt: '2027-03-06'
+methodFreezeAt: 2027-03-05T18:00Z
+systems:
+- name: example-open-model
+  version: 7b-instruct
+notes: 'Pilot: two correction cases and a few fake corrections, run in one evening.'
+rawLog:
+  sha256: aa694cc871e7f838b7a6ba2dac04bdf8f164795d22976a77ab5e8e19a97c2105
+  bytes: 6534
+  format: example harness text log

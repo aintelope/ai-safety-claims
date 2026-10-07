@@ -1,0 +1,6 @@
+# Fictional fixture.
+source:
+  url: https://example.org/fixtures/jones-2027-episodes.csv
+  sha256: fe1d9a461acd66ff75457bfd4dcd63a868a56246d840e72ab7a9d91052eb9aa2
+  description: Per-item data released with the paper (fixture copy in sources/).
+script: m04_csv.py

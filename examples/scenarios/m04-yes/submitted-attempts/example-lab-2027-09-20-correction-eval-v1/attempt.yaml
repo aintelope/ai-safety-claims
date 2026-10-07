@@ -14,3 +14,7 @@ artifact:
 systems:
 - name: example-model
   version: v3
+rawLog:
+  sha256: c87649d2a232a943598e7e94bd67ec67869737965fe85a70d5f002eec1577be9
+  bytes: 26726
+  format: example harness text log

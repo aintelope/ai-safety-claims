@@ -16,6 +16,7 @@ from pathlib import Path
 
 import jsonschema
 
+from . import evidence
 from .markets import MODULES
 from .tables import TableError, forbidden_keys, load_yaml, parse_table
 
@@ -87,6 +88,17 @@ def _apply(items, metrics):
         value = metrics[item["id"]]
         results[item["id"]] = {"value": round(value, 4) if isinstance(value, float) else value,
                                "ok": _threshold_ok(item, value)}
+    return results
+
+
+def _exercised(bars, metrics):
+    """Shared rule exercisedBars: a bar whose denominator the test design supplies needs at least one such case.
+    Bars over the method's own output (certificates it chose to issue) carry no exercisedBy."""
+    results = {}
+    for bar in bars:
+        if "exercisedBy" in bar:
+            value = metrics[bar["exercisedBy"]]
+            results[f"exercised:{bar['id']}"] = {"value": value, "ok": value >= 1}
     return results
 
 
@@ -174,15 +186,24 @@ def evaluate_attempt(root, attempt_dir, attempt, contract, common, all_attempt_i
                 problems.append("hiddenSuiteHash does not match the suite manifest")
 
     rows = []
+    freeze_problems = []
     table_path = attempt_dir / "score-table.csv"
     if table_path.exists():
         rows, table_errors, _ = parse_table(table_path, contract["_columns"])
         problems += [f"score-table.csv {e}" for e in table_errors]
         if not table_errors:
+            ev = evidence.check(root, attempt_dir, attempt, contract, common, MODULES[contract["market"]], manifest,
+                                _schema_errors)
+            problems += ev.problems
+            freeze_problems += ev.freeze_problems
+            if ev.rows is not None:
+                diffs = evidence.compare(rows, ev.rows, MODULES[contract["market"]].KEY)
+                problems += [f"score table disagrees with the trials: {d}" for d in diffs[:10]]
             try:
                 metrics = MODULES[contract["market"]].compute(rows)
                 rec["metrics"] = {k: round(v, 4) if isinstance(v, float) else v for k, v in metrics.items()}
                 rec["qualification"] = _apply(contract["qualification"], metrics)
+                rec["qualification"].update(_exercised(contract["bars"], metrics))
                 rec["bars"] = _apply(contract["bars"], metrics)
                 rec["barsMet"] = all(b["ok"] for b in rec["bars"].values())
             except TableError as e:
@@ -201,6 +222,7 @@ def evaluate_attempt(root, attempt_dir, attempt, contract, common, all_attempt_i
 
     # 3. Mechanical qualification.
     failed = [f"{k} = {v['value']}" for k, v in rec["qualification"].items() if not v["ok"]]
+    failed += freeze_problems
     if manifest and contract["hiddenSuite"]["postFreezeBuiltAfterMethodFreeze"] and attempt["attemptType"] == "run":
         built = manifest.get("postFreezeBuiltAt")
         if not built or _datetime(built) <= _datetime(attempt["methodFreezeAt"]):
@@ -256,6 +278,18 @@ def _check_submitted_files(attempt_dir):
         found = header & {"qualifying", "barsMet", "outcome", "reason"}
         if found:
             raise BuildError(f"{table}: submitters may not set {sorted(found)}")
+
+
+def check_sketches(root):
+    """Sketches never feed an outcome; CI only rejects outcome fields and unknown contracts in them."""
+    contracts = load_contracts()
+    base = Path(root) / "sketches"
+    for d in sorted(p for p in base.iterdir() if p.is_dir()) if base.exists() else []:
+        _check_submitted_files(d)
+        if (d / "attempt.yaml").exists():
+            attempt = load_yaml(d / "attempt.yaml") or {}
+            if (attempt.get("market"), attempt.get("contractVersion")) not in contracts:
+                raise BuildError(f"{d}: no contract {attempt.get('market')} version {attempt.get('contractVersion')}")
 
 
 def build_outcomes(root, only_markets_with_attempts=False):

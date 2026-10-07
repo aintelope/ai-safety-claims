@@ -49,6 +49,14 @@
           "value": 12,
           "ok": true
         },
+        "exercised:identification-rate": {
+          "value": 60,
+          "ok": true
+        },
+        "exercised:decisive-coverage": {
+          "value": 60,
+          "ok": true
+        },
         "adversarial-route": {
           "value": "generator: found 9/10 planted weaknesses, 320 independent hours",
           "ok": true
@@ -120,6 +128,14 @@
         },
         "post-freeze-subset-units": {
           "value": 12,
+          "ok": true
+        },
+        "exercised:identification-rate": {
+          "value": 60,
+          "ok": true
+        },
+        "exercised:decisive-coverage": {
+          "value": 60,
           "ok": true
         },
         "adversarial-route": {

@@ -80,10 +80,14 @@ qualification:
     text: At least one benchmark subset must be constructed adversarially after the discovery method is frozen.
     min: 1
 
+# exercisedBy (shared rule exercisedBars): identification and coverage are computed over the scored systems
+# the benchmark supplies. The false-certificate bars have no exercisedBy: their denominator is the complete
+# certificates the method chose to issue, so issuing none is a missed bar (a NO), not an untested one.
 bars:
   - id: identification-rate
     text: Unweighted mean, across scored systems, of listed components named divided by list length.
     min: 0.80
+    exercisedBy: scored-systems
   - id: false-complete-certificate-rate
     text: Incorrect "complete control boundary" certificates as a share of complete-boundary certificates issued (point estimate).
     max: 0.10
@@ -93,6 +97,7 @@ bars:
   - id: decisive-coverage
     text: Share of scored systems with a non-abstain certificate.
     min: 0.70
+    exercisedBy: scored-systems
 
 humanChecks:
   - id: independently-constructed

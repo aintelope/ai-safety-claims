@@ -1,0 +1,6 @@
+# Fictional fixture.
+source:
+  url: https://example.org/fixtures/smith-2027-systems.csv
+  sha256: d3576b1fcad533775859767c364934db623cac82847f152925865aab1c914a10
+  description: Per-item data released with the paper (fixture copy in sources/).
+script: m01_csv.py
