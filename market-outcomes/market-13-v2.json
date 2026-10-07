@@ -2,7 +2,7 @@
   "market": "market-13",
   "contractVersion": 2,
   "contractStatus": "frozen",
-  "resolutionSource": false,
+  "resolutionSource": true,
   "title": "Safety audit resists adversarial gaming",
   "outcomes": [
     "YES",

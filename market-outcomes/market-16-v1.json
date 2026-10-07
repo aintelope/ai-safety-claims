@@ -2,7 +2,7 @@
   "market": "market-16",
   "contractVersion": 1,
   "contractStatus": "frozen",
-  "resolutionSource": false,
+  "resolutionSource": true,
   "title": "Selection that keeps correction under shocks",
   "outcomes": [
     "YES",

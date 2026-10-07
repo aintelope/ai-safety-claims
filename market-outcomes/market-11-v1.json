@@ -2,7 +2,7 @@
   "market": "market-11",
   "contractVersion": 1,
   "contractStatus": "frozen",
-  "resolutionSource": false,
+  "resolutionSource": true,
   "title": "Coordination without communication",
   "outcomes": [
     "YES",

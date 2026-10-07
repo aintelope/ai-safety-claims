@@ -2,7 +2,7 @@
   "market": "market-07",
   "contractVersion": 1,
   "contractStatus": "frozen",
-  "resolutionSource": false,
+  "resolutionSource": true,
   "title": "Correctability under competitive selection",
   "outcomes": [
     "YES",

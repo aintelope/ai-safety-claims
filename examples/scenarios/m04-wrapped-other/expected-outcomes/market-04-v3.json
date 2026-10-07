@@ -2,7 +2,7 @@
   "market": "market-04",
   "contractVersion": 3,
   "contractStatus": "frozen",
-  "resolutionSource": false,
+  "resolutionSource": true,
   "title": "Corrections change the system",
   "outcomes": [
     "YES",

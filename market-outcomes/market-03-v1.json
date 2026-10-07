@@ -2,7 +2,7 @@
   "market": "market-03",
   "contractVersion": 1,
   "contractStatus": "frozen",
-  "resolutionSource": false,
+  "resolutionSource": true,
   "title": "Who or what rules apply to",
   "outcomes": [
     "YES",

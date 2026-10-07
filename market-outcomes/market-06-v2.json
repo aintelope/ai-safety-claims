@@ -2,7 +2,7 @@
   "market": "market-06",
   "contractVersion": 2,
   "contractStatus": "frozen",
-  "resolutionSource": false,
+  "resolutionSource": true,
   "title": "Reliable successor safety auditing",
   "outcomes": [
     "YES",

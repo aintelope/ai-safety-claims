@@ -2,7 +2,7 @@
   "market": "market-10",
   "contractVersion": 1,
   "contractStatus": "frozen",
-  "resolutionSource": false,
+  "resolutionSource": true,
   "title": "Low hidden capability and reliable correction",
   "outcomes": [
     "YES",

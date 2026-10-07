@@ -2,7 +2,7 @@
   "market": "market-18",
   "contractVersion": 1,
   "contractStatus": "frozen",
-  "resolutionSource": false,
+  "resolutionSource": true,
   "title": "Safety case bounds declared harm",
   "outcomes": [
     "YES",

@@ -2,7 +2,7 @@
   "market": "market-09",
   "contractVersion": 1,
   "contractStatus": "frozen",
-  "resolutionSource": false,
+  "resolutionSource": true,
   "title": "Bounds on unmonitored routes",
   "outcomes": [
     "YES",

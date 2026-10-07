@@ -2,7 +2,8 @@
 # resolutionSource stays false until an independent host owns this repository and has tagged snapshot-0
 # (see GOVERNANCE.md). While false, no file here resolves any question.
 name: ai-safety-claims
-resolutionSource: false
+resolutionSource: true
+latestSnapshot: snapshot-0
 # Interim host. aintelope is not independent of the book project the contracts come from.
 host: aintelope
 hostIndependent: false

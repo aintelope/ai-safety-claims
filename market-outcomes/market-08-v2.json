@@ -2,7 +2,7 @@
   "market": "market-08",
   "contractVersion": 2,
   "contractStatus": "frozen",
-  "resolutionSource": false,
+  "resolutionSource": true,
   "title": "Auditor can sufficiently inspect the system",
   "outcomes": [
     "YES",

@@ -2,7 +2,7 @@
   "market": "market-01",
   "contractVersion": 2,
   "contractStatus": "frozen",
-  "resolutionSource": false,
+  "resolutionSource": true,
   "title": "Discovering where control resides",
   "outcomes": [
     "YES",
