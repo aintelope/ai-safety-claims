@@ -155,6 +155,7 @@ validator/             the checker
 examples/              fictional fixture scenarios
 resolution-tags/       notes per snapshot tag
 site/                  Astro site rendered from `validator export` (deployed by .github/workflows/pages.yml)
+sources/               where contract fields pointing into the book (bridge, bookSection) resolve on its site
 ```
 
 ## License

@@ -20,6 +20,7 @@ const commonChecks = [
 ];
 const columns = Object.entries(contract.scoreTable.columns ?? {});
 const sketches = sketchesFor(market.market);
+const links = contract.bookLinks ?? {};
 const sections = [
   ["question", "Question"], ["outcomes", "Outcomes"], ["background", "Background"], ["yes-requires", "YES requires"],
   ["output", "Required output"], ["qualification", "Qualification thresholds"], ["bars", "Performance bars"],
@@ -31,8 +32,11 @@ const sections = [
 <p class="meta">
   <span>Contract version {contract.version} <span class={`badge ${contract.status}`}>{contract.status}</span></span>
   <span>Resolve by {contract.resolveBy}</span>
-  <span>Bridge {contract.bridge}</span>
-  <span>Book: <code>{contract.bookSection}</code></span>
+  <span>Bridge {links.bridge ? <a href={links.bridge}>{contract.bridge}</a> : contract.bridge}</span>
+  <span>Book: {links.section
+    ? <a href={links.section}>Appendix H, Market {n}</a>
+    : <code>{contract.bookSection}</code>}</span>
+  {links.marketCard && <span><a href={links.marketCard}>Market card</a></span>}
 </p>
 
 <div class="cite">

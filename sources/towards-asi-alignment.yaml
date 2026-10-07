@@ -1,0 +1,31 @@
+# Where contract fields that point into Towards Superintelligence Alignment resolve on the book's companion
+# site. Not part of any frozen contract, so a moved page is fixed here without a new contract version.
+# bridges: copied from the book's metadata/predictions.yml bridgeCardSlugs.
+name: Towards Superintelligence Alignment
+site: https://towards-alignment.com
+repository: https://github.com/GunnarZarncke/towards-asi-alignment
+# {bookSection} and {market} are filled from the contract.
+section: https://towards-alignment.com/cards/appendix/appp/full/#{bookSection}
+marketCard: https://towards-alignment.com/cards/predictions/{market}/
+bridges:
+  MB1: https://towards-alignment.com/cards/mb1-boundary-estimator-soundness/
+  MB2: https://towards-alignment.com/cards/mb2-bundle-identifiability/
+  MB3: https://towards-alignment.com/cards/mb3-bearer-import/
+  MB4: https://towards-alignment.com/cards/mb4-correction-legitimacy/
+  MB4a: https://towards-alignment.com/cards/mb4a-measured-path-legitimacy/
+  MB5: https://towards-alignment.com/cards/mb5-successor-ontology-shift/
+  MB6: https://towards-alignment.com/cards/mb6-selection-and-basin-stability/
+  MB6a: https://towards-alignment.com/cards/mb6-selection-and-basin-stability/
+  MB6b: https://towards-alignment.com/cards/mb6-selection-and-basin-stability/
+  MB7: https://towards-alignment.com/cards/mb7-hidden-capability-and-access/
+  MB7a: https://towards-alignment.com/cards/mb7a-access-model-soundness/
+  MB7b: https://towards-alignment.com/cards/mb7b-filter-coverage/
+  MB7c: https://towards-alignment.com/cards/mb7c-bounded-hidden-capability/
+  MB7d: https://towards-alignment.com/cards/mb7d-acausal-coordination/
+  MB9: https://towards-alignment.com/cards/mb9-grounding-certificate/
+  MB10: https://towards-alignment.com/cards/mb10-successor-forgeability/
+  MB11: https://towards-alignment.com/cards/mb11-deployment-safety/
+  constructibility: https://towards-alignment.com/cards/target-realization/
+  composition: https://towards-alignment.com/cards/evidence-and-uncertainty/
+  u17: https://towards-alignment.com/cards/bearer-admission-adjacent/
+  safe-in: https://towards-alignment.com/cards/mb11-deployment-safety/

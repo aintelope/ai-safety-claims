@@ -7,6 +7,7 @@ from pathlib import Path
 
 from . import contribute
 from .engine import REPO, build_outcomes, load_common, load_contracts, load_registry
+from .tables import load_yaml
 
 DEFAULT_REPOSITORY = "https://github.com/aintelope/ai-safety-claims"
 
@@ -26,8 +27,22 @@ def _repository():
     return url if url.startswith("https://github.com/") else DEFAULT_REPOSITORY
 
 
-def _contract(contract, outcome):
+def _book_links(contract, source):
+    """Links for the contract's bookSection, bridge, and market card (sources/towards-asi-alignment.yaml)."""
+    if not source:
+        return {}
+    links = {"site": source["site"], "name": source["name"]}
+    if contract.get("bookSection"):
+        links["section"] = source["section"].format(bookSection=contract["bookSection"])
+    if contract.get("bridge") in source.get("bridges", {}):
+        links["bridge"] = source["bridges"][contract["bridge"]]
+    links["marketCard"] = source["marketCard"].format(market=contract["market"])
+    return links
+
+
+def _contract(contract, outcome, source=None):
     out = {k: v for k, v in contract.items() if not k.startswith("_")}
+    out["bookLinks"] = _book_links(contract, source)
     out["file"] = f"market-contracts/{contract['market']}/contract-v{contract['version']}.yaml"
     columns = contract["_columns"]
     out["scoreTable"] = {"unit": columns.get("unit"), "columns": columns.get("columns", {}),
@@ -39,10 +54,12 @@ def _contract(contract, outcome):
 def build_export():
     contracts = load_contracts()
     outcomes = build_outcomes(REPO)
+    source_file = REPO / "sources" / "towards-asi-alignment.yaml"
+    source = load_yaml(source_file) if source_file.exists() else None
     by_market = {}
     for (market, version), contract in sorted(contracts.items()):
         outcome = outcomes.get(f"{market}-v{version}.json")
-        by_market.setdefault(market, []).append(_contract(contract, outcome))
+        by_market.setdefault(market, []).append(_contract(contract, outcome, source))
     markets = []
     for market, versions in sorted(by_market.items()):
         latest = max(versions, key=lambda v: v["version"])
