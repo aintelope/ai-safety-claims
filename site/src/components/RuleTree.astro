@@ -1,0 +1,31 @@
+---
+import { humanize } from "../lib/data";
+// Renders a shared-rules section: strings as paragraphs, lists as bullets, maps as subsections.
+const { value, depth = 3, skip = [] } = Astro.props;
+const Self = Astro.self;
+const isText = (v: any) => typeof v === "string";
+const all = value && typeof value === "object" && !Array.isArray(value)
+  ? Object.entries(value).filter(([k]) => !skip.includes(k)) : [];
+// Machine thresholds beside the text (minGroups: 3) go on one line instead of a heading each.
+const scalar = (v: any) => typeof v === "number" || typeof v === "boolean";
+const numbers = all.filter(([, v]) => scalar(v));
+const entries = all.filter(([, v]) => !scalar(v));
+---
+{isText(value) && <p>{value.trim()}</p>}
+{typeof value === "number" && <p><code>{value}</code></p>}
+{Array.isArray(value) && (
+  <ul>{value.map((v: any) => <li>{
+    v && typeof v === "object" && "id" in v && "text" in v ? <><code>{v.id}</code>: {v.text}</>
+    : typeof v === "object" ? <Self value={v} depth={depth + 1} /> : String(v).trim()}</li>)}</ul>
+)}
+{numbers.length > 0 && (
+  <p class="muted">Machine-readable: {numbers.map(([k, v]: [string, any], i: number) =>
+    <>{i > 0 && " · "}{humanize(k).toLowerCase()} <code>{String(v)}</code></>)}</p>
+)}
+{entries.map(([k, v]: [string, any]) =>
+  k === "text" ? <Self value={v} depth={depth} /> : (
+    <section>
+      {depth <= 3 ? <h3 id={k}>{humanize(k)}</h3> : <h4 id={k}>{humanize(k)}</h4>}
+      <Self value={v} depth={depth + 1} />
+    </section>
+  ))}

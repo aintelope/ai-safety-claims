@@ -1,0 +1,14 @@
+{
+  "name": "ai-safety-claims-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "data": "cd .. && if [ -x .venv/bin/python ]; then .venv/bin/python -m validator export; else python3 -m validator export; fi",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^7.0.4"
+  }
+}

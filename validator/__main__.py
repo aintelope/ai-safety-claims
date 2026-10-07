@@ -1,7 +1,9 @@
 """Usage:
-  python -m validator build           write market-outcomes/ and ui/index.html from the tree
+  python -m validator build           write market-outcomes/ from the tree
   python -m validator check           fail if those files differ from what build would write
   python -m validator test [--update] run examples/scenarios and the statistics tests
+  python -m validator export [--out site/src/data/registry.json]
+                                      everything the site shows, as one JSON file
 
 Contributors:
   python -m validator new --market market-04 --submitter you --slug my-eval [--type wrapped] [--from-fixture m04-yes]
@@ -38,19 +40,15 @@ from pathlib import Path
 import yaml
 
 from . import contribute, logtools
-from .engine import REPO, BuildError, build_outcomes, check_sketches, dump, load_common, load_registry
+from .engine import REPO, BuildError, build_outcomes, check_sketches, dump, load_common
 from .stats import clopper_pearson_upper
-from .ui import render
 
 OUT = REPO / "market-outcomes"
-UI = REPO / "ui" / "index.html"
 
 
 def expected_files():
     outcomes = build_outcomes(REPO)
-    files = {OUT / name: dump(obj) for name, obj in outcomes.items()}
-    files[UI] = render(outcomes, load_registry())
-    return files
+    return {OUT / name: dump(obj) for name, obj in outcomes.items()}
 
 
 def cmd_build():
@@ -74,7 +72,7 @@ def cmd_check():
     if bad:
         print("out of date (run python -m validator build): " + ", ".join(bad))
         return 1
-    print(f"ok: {len(files) - 1} outcome files and ui/index.html match the validator")
+    print(f"ok: {len(files)} outcome files match the validator")
     return 0
 
 
@@ -251,6 +249,8 @@ def _parser():
     sub = p.add_subparsers(dest="cmd", required=True)
     sub.add_parser("build")
     sub.add_parser("check")
+    ex = sub.add_parser("export")
+    ex.add_argument("--out", default=str(REPO / "site" / "src" / "data" / "registry.json"))
     t = sub.add_parser("test")
     t.add_argument("--update", action="store_true")
     n = sub.add_parser("new")
@@ -307,6 +307,9 @@ def main(argv):
             return cmd_build()
         if args.cmd == "check":
             return cmd_check()
+        if args.cmd == "export":
+            from .export import write_export
+            return write_export(args.out)
         if args.cmd == "test":
             return cmd_test(args.update)
         if args.cmd == "new":

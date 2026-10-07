@@ -1,6 +1,6 @@
 # Astro site
 
-**Status: decided, not started.**
+**Status: first version built (2026-10-08).** Open items below.
 
 ## Decisions (2026-10-07)
 - GitHub Pages under the current org: `aintelope.github.io/ai-safety-claims`; moves with the repo.
@@ -8,22 +8,22 @@
   "Work in progress" section on each market page; `noindex`.
 - The validator stays the only computation. Astro renders an export.
 
-## Interim (2026-10-07)
-- [x] `.github/workflows/pages.yml` publishes `ui/index.html` on every push to main, after
-      `validator check`. Needs Settings -> Pages -> Source: GitHub Actions (org admin).
-- [ ] When the Astro site exists, the same workflow builds it and uploads `site/dist` instead of `ui/`.
+## Built (2026-10-08)
+- [x] `validator export` writes `site/src/data/registry.json` (contracts of every version with score-table
+      spec and outcome, shared rules, registry settings, sketch dry runs, repository and commit). Not committed;
+      generated in CI before each build.
+- [x] Astro app in `site/` (Astro 7, static, no framework): home with the markets table and the
+      not-a-resolution-source banner; `/markets/market-NN/` (latest version) and `/markets/market-NN/vK/`
+      (stable per version, linked from the listing template) with the full contract: question, outcomes,
+      background, YES requires, output, qualification thresholds, bars, freeze order, adversarial budget,
+      maintainer checks, score-table columns, shared rules inline, current outcome, and a collapsed sketch list;
+      `/rules/common-v1/`; `/sketches/` and `/sketches/<id>/` (noindex, linked only from market pages and the
+      footer).
+- [x] `pages.yml` builds the site after `validator check` and deploys `site/dist`; `validate.yml` also builds
+      it on every push and pull request. `ui/index.html` and `validator/ui.py` retired.
+- [x] Checked locally: 39 pages build; no horizontal overflow at 390px.
 
-## Steps
-- [ ] `validator export` → `ui/data/*.json` (contracts, attempts, outcomes, adjudication status, sketch dry
-      runs, evidence summaries) with a schema; `validator check` compares the export instead of
-      `ui/index.html`.
-- [ ] `site/` Astro app (own package.json, static, no framework; vanilla JS filters). No dependency on the
-      book's site.
-- [ ] Pages: home (markets, outcomes, not-a-resolution-source banner); market version (question,
-      thresholds, bars, outcome, attempts, coverage grid, collapsed sketches); attempt (metrics vs
-      thresholds, checks, freeze and trial facts, raw log link, files at commit); sketch (dry run);
-      contribute (new → dry-run → submit, fixtures); snapshots (tags, archive links).
-- [ ] Every page names the commit or tag it was built from; outcome pages link the JSON at that tag.
-- [ ] CI: validate, then build from the export; deploy Pages from main; smoke-build each
-      `examples/scenarios` tree.
-- [ ] Retire `ui/index.html`.
+## Open
+- [ ] Per-attempt pages (metrics against thresholds, evidence summary, raw log link).
+- [ ] Snapshots page (tags and archive links) once snapshot tags exist.
+- [ ] A smoke build per `examples/scenarios` tree (needs export to take a root).

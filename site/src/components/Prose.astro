@@ -1,0 +1,6 @@
+---
+// A text field from a contract or the shared rules: a string (one paragraph) or a list of them.
+const { text } = Astro.props;
+const items = text == null ? [] : Array.isArray(text) ? text : [text];
+---
+{items.map((t: any) => <p>{String(t).trim()}</p>)}

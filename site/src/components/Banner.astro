@@ -1,0 +1,20 @@
+---
+import data from "../lib/data";
+const r = data.registry;
+const excluded = (r.notAcceptedWhileNotIndependent ?? []).join(" or ");
+---
+{!r.resolutionSource && (
+  <>
+    <div class="banner">
+      <strong>Not a resolution source.</strong>{" "}
+      {r.host && !r.hostIndependent
+        ? <>Hosted for now by {r.host}, which is not independent of the book project the contracts come from.<sup>1</sup></>
+        : <>No independent host owns this registry yet.</>}
+      {" "}No outcome on this site resolves any question until an independent host tags a snapshot.
+    </div>
+    {r.host && !r.hostIndependent && excluded && (
+      <p class="footnote"><sup>1</sup> Until an independent host owns the registry, attempts submitted or authored
+        by {excluded} are not accepted. See <a href={`${data.repository}/blob/main/GOVERNANCE.md`}>GOVERNANCE.md</a>.</p>
+    )}
+  </>
+)}

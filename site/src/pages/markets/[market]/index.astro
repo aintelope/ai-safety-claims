@@ -1,0 +1,16 @@
+---
+import Base from "../../../layouts/Base.astro";
+import Banner from "../../../components/Banner.astro";
+import Contract from "../../../components/Contract.astro";
+import data, { marketNumber } from "../../../lib/data";
+
+export function getStaticPaths() {
+  return data.markets.map((m: any) => ({ params: { market: m.market }, props: { market: m } }));
+}
+const { market } = Astro.props;
+const contract = market.versions.find((v: any) => v.version === market.latestVersion);
+---
+<Base title={`Market ${marketNumber(market.market)}: ${market.title}`} description={contract.question.trim()}>
+  <Banner />
+  <Contract market={market} contract={contract} latestView={true} />
+</Base>

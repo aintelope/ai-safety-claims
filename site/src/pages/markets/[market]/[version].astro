@@ -1,0 +1,17 @@
+---
+// Stable page for one contract version: /markets/market-NN/vK/. Metaculus questions link here.
+import Base from "../../../layouts/Base.astro";
+import Banner from "../../../components/Banner.astro";
+import Contract from "../../../components/Contract.astro";
+import data, { marketNumber } from "../../../lib/data";
+
+export function getStaticPaths() {
+  return data.markets.flatMap((m: any) =>
+    m.versions.map((v: any) => ({ params: { market: m.market, version: `v${v.version}` }, props: { market: m, contract: v } })));
+}
+const { market, contract } = Astro.props;
+---
+<Base title={`Market ${marketNumber(market.market)} v${contract.version}: ${market.title}`} description={contract.question.trim()}>
+  <Banner />
+  <Contract market={market} contract={contract} />
+</Base>

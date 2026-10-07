@@ -14,7 +14,18 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -r requirements.txt
-      # Fails if market-outcomes/ or ui/ differ from what the validator computes,
+      # Fails if market-outcomes/ differ from what the validator computes,
       # or if a submitted file sets an outcome field.
       - run: python -m validator check
       - run: python -m validator test
+      # The site must still build from the export (pages.yml deploys it from main).
+      - run: python -m validator export
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - run: npm ci
+        working-directory: site
+      - run: npm run build
+        working-directory: site

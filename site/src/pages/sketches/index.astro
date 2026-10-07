@@ -1,0 +1,30 @@
+---
+import Base from "../../layouts/Base.astro";
+import data, { href, marketNumber } from "../../lib/data";
+---
+<Base title="Work in progress" description="Sketches: unfinished attempts. No outcome reads them." noindex={true}>
+  <h1>Work in progress</h1>
+  <p>
+    Sketches are unfinished attempts. No outcome reads them, so they can never make a market YES or NO. Each shows
+    the registry's dry run: what is still missing for a qualifying attempt. Start one in the
+    {" "}<a href="https://github.com/aintelope/ai-safety-claims-workbench">workbench</a>.
+  </p>
+  {data.sketches.length === 0 ? <p class="muted">No sketches yet.</p> : (
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Sketch</th><th>Market</th><th>Status</th><th class="num">To fix</th><th class="num">Qualification gaps</th></tr></thead>
+        <tbody>
+          {data.sketches.map((s: any) => (
+            <tr>
+              <td><a href={href(`sketches/${s.id}/`)}><code>{s.id}</code></a></td>
+              <td>{s.market ? <a href={href(`markets/${s.market}/`)}>Market {marketNumber(s.market)}</a> : "–"}{s.contractVersion && <> v{s.contractVersion}</>}</td>
+              <td>{s.report.status}</td>
+              <td class="num">{s.report.blocking.length}</td>
+              <td class="num">{s.report.qualification.length}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )}
+</Base>

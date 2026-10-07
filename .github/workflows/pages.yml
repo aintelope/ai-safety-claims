@@ -1,6 +1,6 @@
 name: pages
 
-# Publishes ui/ (the validator's static page) to GitHub Pages:
+# Builds the Astro site in site/ from `python -m validator export` and publishes it to GitHub Pages:
 # https://aintelope.github.io/ai-safety-claims/
 # Requires Settings -> Pages -> Source: GitHub Actions.
 
@@ -28,12 +28,22 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -r requirements.txt
-      # Never publish a page that disagrees with the outcome files the validator would write.
+      # Never publish outcomes that disagree with what the validator computes.
       - run: python -m validator check
+      - run: python -m validator export
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - run: npm ci
+        working-directory: site
+      - run: npm run build
+        working-directory: site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ui
+          path: site/dist
 
   deploy:
     needs: build

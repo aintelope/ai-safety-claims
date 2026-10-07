@@ -1,0 +1,32 @@
+---
+import Base from "../../layouts/Base.astro";
+import data, { href, tree, marketNumber } from "../../lib/data";
+
+export function getStaticPaths() {
+  return data.sketches.map((s: any) => ({ params: { id: s.id }, props: { sketch: s } }));
+}
+const { sketch } = Astro.props;
+const r = sketch.report;
+const sections = [
+  ["Fix before submitting", r.blocking], ["Missing for a qualifying attempt", r.qualification], ["Evidence", r.evidence],
+  ["Coverage so far", r.coverage], ["Qualification thresholds already met", r.met],
+  ["Bar preview (not a result)", r.preview], ["Maintainer checks after submission", r.maintainer],
+];
+---
+<Base title={`Sketch ${sketch.id}`} noindex={true}>
+  <p class="muted"><a href={href("sketches/")}>Work in progress</a></p>
+  <h1><code>{sketch.id}</code></h1>
+  <p class="meta">
+    {sketch.market && <span><a href={href(`markets/${sketch.market}/`)}>Market {marketNumber(sketch.market)}</a> v{sketch.contractVersion}</span>}
+    {sketch.attemptType && <span>{sketch.attemptType}</span>}
+    <span><a href={tree(`sketches/${sketch.id}`)}>Files</a></span>
+  </p>
+  <p class="note">A sketch never counts toward an outcome. Status: <strong>{r.status}</strong>.</p>
+  {sketch.notes && <p>{sketch.notes}</p>}
+  {sections.filter(([, items]) => items.length > 0).map(([title, items]) => (
+    <section>
+      <h2>{title}</h2>
+      <ul>{items.map((i: string) => <li>{i}</li>)}</ul>
+    </section>
+  ))}
+</Base>

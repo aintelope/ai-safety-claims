@@ -1,0 +1,158 @@
+---
+import data, { href, source, versionPath, marketNumber, humanize, sketchesFor } from "../lib/data";
+import Prose from "./Prose.astro";
+import Checks from "./Checks.astro";
+import Outcome from "./Outcome.astro";
+
+// One contract version, complete: what a Metaculus question links to.
+const { market, contract, latestView = false } = Astro.props;
+const shared = data.sharedRules;
+const n = marketNumber(market.market);
+const stable = new URL(href(versionPath(market.market, contract.version)), Astro.site).toString();
+const newer = market.versions.filter((v: any) => v.version > contract.version);
+const others = market.versions.filter((v: any) => v.version !== contract.version);
+const serious = contract.adversarialBudget === "serious";
+const common = shared.humanChecks;
+const commonChecks = [
+  ...common.all,
+  ...(contract.attemptTypes.includes("wrapped") ? common.wrapped.map((c: any) => ({ ...c, when: "wrapped attempts" })) : []),
+  ...(serious ? common.serious : []),
+];
+const columns = Object.entries(contract.scoreTable.columns ?? {});
+const sketches = sketchesFor(market.market);
+const sections = [
+  ["question", "Question"], ["outcomes", "Outcomes"], ["background", "Background"], ["yes-requires", "YES requires"],
+  ["output", "Required output"], ["qualification", "Qualification thresholds"], ["bars", "Performance bars"],
+  ["freeze", "Freeze order and hidden suite"], ["adversarial", "Adversarial budget"], ["human-checks", "Maintainer checks"],
+  ["files", "Attempt files and score table"], ["common-rules", "Rules every contract shares"], ["outcome", "Current outcome"],
+];
+---
+<h1>Market {n}: {contract.title}</h1>
+<p class="meta">
+  <span>Contract version {contract.version} <span class={`badge ${contract.status}`}>{contract.status}</span></span>
+  <span>Resolve by {contract.resolveBy}</span>
+  <span>Bridge {contract.bridge}</span>
+  <span>Book: <code>{contract.bookSection}</code></span>
+</p>
+
+<div class="cite">
+  {latestView
+    ? <>This page always shows the latest version. To cite this version, link{" "}<a href={stable}>{stable}</a>.</>
+    : <>Stable link for this version: <a href={stable}>{stable}</a>.</>}
+  {" "}Source: <a href={source(contract.file)}><code>{contract.file}</code></a> at the commit this site was built from.
+  {contract.status === "frozen"
+    ? " A frozen version never changes; corrections make a new version."
+    : " A draft version may still change."}
+</div>
+
+{newer.length > 0 && (
+  <p class="note">A newer version exists:{" "}
+    {newer.map((v: any) => <a href={href(versionPath(market.market, v.version))}>v{v.version}</a>)}.
+  </p>
+)}
+{!latestView && others.length > 0 && (
+  <p class="muted">Other versions: {others.map((v: any, i: number) => <>{i > 0 && ", "}<a href={href(versionPath(market.market, v.version))}>v{v.version}</a></>)}.
+    {" "}<a href={href(`markets/${market.market}/`)}>Latest</a>.</p>
+)}
+
+<ul class="toc">{sections.map(([id, label]) => <li><a href={`#${id}`}>{label}</a></li>)}</ul>
+
+<h2 id="question">Question</h2>
+<p class="question">{contract.question.trim()}</p>
+
+<h2 id="outcomes">Outcomes</h2>
+<ul>
+  {contract.outcomes.includes("YES") && <li><span class="YES">YES</span>: at least one qualifying attempt met the frozen performance bars.</li>}
+  {contract.outcomes.includes("NO") && <li><span class="NO">NO</span>: at least one qualifying attempt existed, and every qualifying attempt missed the bars.</li>}
+  {contract.outcomes.includes("OTHER") && <li><span class="OTHER">OTHER</span>: no qualifying attempt existed.</li>}
+</ul>
+<Prose text={shared.threeWayRule.qualifyingAttempt} />
+<Prose text={shared.threeWayRule.exercisedBars} />
+
+<h2 id="background">Background</h2>
+<Prose text={contract.background} />
+
+<h2 id="yes-requires">YES requires</h2>
+<Prose text={contract.yesRequires} />
+
+<h2 id="output">Required output</h2>
+<Prose text={contract.output} />
+
+<h2 id="qualification">Qualification thresholds</h2>
+<p class="muted">An attempt below any of these does not qualify: it cannot make the market YES or NO.</p>
+<Checks items={contract.qualification} kind="qualification" />
+
+<h2 id="bars">Performance bars</h2>
+<p class="muted">A qualifying attempt that meets all of these makes the market YES; one that misses any counts toward NO.</p>
+<Checks items={contract.bars} kind="bar" />
+
+<h2 id="freeze">Freeze order and hidden suite</h2>
+<ul>{contract.freezeOrder.map((f: string) => <li>{f.trim()}</li>)}</ul>
+<p>
+  {contract.hiddenSuite.requiredFor.length > 0
+    ? <>A hidden suite from an independent challenge operator is required for {contract.hiddenSuite.requiredFor.join(" and ")} attempts.</>
+    : <>No registry hidden suite is required.</>}
+  {contract.hiddenSuite.postFreezeBuiltAfterMethodFreeze && <> Its post-freeze part must be built after the method freeze.</>}
+</p>
+
+<h2 id="adversarial">Adversarial budget: {contract.adversarialBudget}</h2>
+{serious ? (
+  <>
+    <Prose text={shared.seriousAdversarialEvaluation.text} />
+    <ul>{Object.entries(shared.seriousAdversarialEvaluation.routes).map(([k, r]: [string, any]) =>
+      <li><strong>{humanize(k)}:</strong> {r.text.trim()}</li>)}</ul>
+  </>
+) : <Prose text={shared.seriousAdversarialEvaluation.defaultBudget.text} />}
+
+<h2 id="human-checks">Maintainer checks</h2>
+<p class="muted">Calls a script cannot make. A check recorded as fail, or still unsettled when the window closes, makes the attempt not qualifying.</p>
+<div class="table-wrap">
+  <table>
+    <thead><tr><th>Check</th><th>Applies to</th><th>Text</th></tr></thead>
+    <tbody>
+      {contract.humanChecks.map((c: any) => <tr><td><code>{c.id}</code></td><td>this market</td><td>{c.text}</td></tr>)}
+      {commonChecks.map((c: any) => <tr><td><code>{c.id}</code></td><td>{c.when ?? "every attempt"}</td><td>{c.text}</td></tr>)}
+    </tbody>
+  </table>
+</div>
+
+<h2 id="files">Attempt files and score table</h2>
+<p>
+  Attempt types: {contract.attemptTypes.join(", ")}. Required files: {contract.requiredFiles.map((f: string, i: number) => <>{i > 0 && ", "}<code>{f}</code></>)},
+  plus the evidence every attempt carries (<a href={href("rules/common-v1/#evidence")}>evidence rule</a>).
+  {contract.scoreTable.unit && <> One score-table row per {contract.scoreTable.unit}.</>}
+</p>
+{columns.length > 0 && (
+  <details>
+    <summary>Score-table columns ({columns.length})</summary>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Column</th><th>Type</th><th>Description</th></tr></thead>
+        <tbody>
+          {columns.map(([name, col]: [string, any]) => (
+            <tr>
+              <td><code>{name}</code></td>
+              <td>{col.type}{col.values && <>: {col.values.join(", ")}</>}{col.requiredWhen && <div class="muted">required when {Object.entries(col.requiredWhen).map(([k, v]) => `${k} = ${v}`).join(", ")}</div>}</td>
+              <td>{col.description}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </details>
+)}
+
+<h2 id="common-rules">Rules every contract shares</h2>
+<p class="muted">Repeated here so this page stands alone; the full text is on <a href={href("rules/common-v1/")}>shared rules, version {shared.version}</a>.</p>
+<Prose text={shared.commonQualification.text} />
+<Prose text={shared.commonQualification.perInstanceCertificate} />
+
+<h2 id="outcome">Current outcome</h2>
+<Outcome outcome={contract.outcome} contract={contract} />
+
+{sketches.length > 0 && (
+  <details>
+    <summary>Work in progress for this market ({sketches.length} sketch{sketches.length > 1 ? "es" : ""}; sketches never count)</summary>
+    <ul>{sketches.map((s: any) => <li><a href={href(`sketches/${s.id}/`)}>{s.id}</a> <span class="muted">({s.report.status})</span></li>)}</ul>
+  </details>
+)}

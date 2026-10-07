@@ -1,0 +1,32 @@
+---
+// The registry's current outcome for one contract version and its attempts.
+const { outcome, contract } = Astro.props;
+const file = `market-outcomes/${contract.market}-v${contract.version}.json`;
+---
+{outcome ? (
+  <>
+    <p>
+      Outcome <span class={outcome.outcome}>{outcome.outcome}</span> ({outcome.reason}). Evidence cutoff
+      {" "}{outcome.evidenceCutoff}; filing window closes {outcome.windowCloses}. A market reads
+      {" "}<code>{file}</code> at a snapshot tag, not this page.
+    </p>
+    {outcome.attempts.length === 0 ? <p class="muted">No attempts filed.</p> : (
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Attempt</th><th>Type</th><th>Qualifying</th><th>Bars met</th><th>Reason</th></tr></thead>
+          <tbody>
+            {outcome.attempts.map((a: any) => (
+              <tr>
+                <td><code>{a.id}</code></td>
+                <td>{a.attemptType}</td>
+                <td>{a.qualifying ? "yes" : "no"}</td>
+                <td>{a.barsMet == null ? "n/a" : a.barsMet ? "yes" : "no"}</td>
+                <td>{a.reason}{a.details?.length > 0 && <ul>{a.details.map((d: string) => <li>{d}</li>)}</ul>}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    )}
+  </>
+) : <p class="muted">No outcome file for this version.</p>}

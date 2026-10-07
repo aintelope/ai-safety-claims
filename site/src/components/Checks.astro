@@ -1,0 +1,25 @@
+---
+import { threshold } from "../lib/data";
+// Qualification thresholds or performance bars of one contract version.
+const { items, kind } = Astro.props;
+---
+<div class="table-wrap">
+  <table>
+    <thead><tr><th>Check</th><th>Threshold</th><th>Meaning</th></tr></thead>
+    <tbody>
+      {items.map((item: any) => (
+        <tr id={`${kind}-${item.id}`}>
+          <td><code>{item.id}</code></td>
+          <td class="num">{threshold(item)}</td>
+          <td>
+            {item.text}
+            {item.exercisedBy && (
+              <div class="muted">Needs at least one case counted by <code>{item.exercisedBy}</code>; otherwise the
+                attempt does not qualify (exercised-bars rule).</div>
+            )}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

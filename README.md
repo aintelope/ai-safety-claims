@@ -118,7 +118,7 @@ See [`examples/`](examples/) for complete fictional attempts.
 
 ```bash
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
-.venv/bin/python -m validator build   # write market-outcomes/ and ui/index.html
+.venv/bin/python -m validator build   # write market-outcomes/
 .venv/bin/python -m validator check   # what CI runs: fail if those files are out of date
 .venv/bin/python -m validator test    # fixture scenarios and statistics tests
 
@@ -130,7 +130,10 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 .venv/bin/python -m validator rerun-adapter <dir> --source <file>   # maintainers: rerun a wrapped adapter
 ```
 
-`ui/index.html` is a static page of contracts, attempts, and outcomes.
+The site (<https://aintelope.github.io/ai-safety-claims/>) is an Astro app in `site/` that renders
+`python -m validator export`: one page per market with the full contract, a stable page per contract
+version (`/markets/market-NN/vK/`, the link a listed question should use), the shared rules, and the
+sketches. Locally: `cd site && npm install && npm run data && npm run build`.
 
 ## Layout
 
@@ -151,7 +154,7 @@ market-outcomes/       generated; what a market admin reads
 validator/             the checker
 examples/              fictional fixture scenarios
 resolution-tags/       notes per snapshot tag
-ui/                    generated static page
+site/                  Astro site rendered from `validator export` (deployed by .github/workflows/pages.yml)
 ```
 
 ## License

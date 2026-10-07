@@ -1,0 +1,52 @@
+---
+import Base from "../layouts/Base.astro";
+import Banner from "../components/Banner.astro";
+import data, { href } from "../lib/data";
+
+const rows = data.markets.map((m: any) => {
+  const latest = m.versions.find((v: any) => v.version === m.latestVersion);
+  const attempts = latest.outcome?.attempts ?? [];
+  return { m, latest, attempts: attempts.length, qualifying: attempts.filter((a: any) => a.qualifying).length };
+});
+---
+<Base title="AI Safety Claims" description="Dated research questions on AI alignment with frozen bars, and the published attempts scored against them.">
+  <h1>AI Safety Claims</h1>
+  <p>
+    A registry of hard, dated research questions about AI alignment. Each question has a frozen contract: the bar
+    a published method must meet by a deadline. Attempts are scored against it, and each market resolves
+    {" "}<span class="YES">YES</span> (a qualifying attempt met the bars), <span class="NO">NO</span> (every
+    qualifying attempt missed) or <span class="OTHER">OTHER</span> (no qualifying attempt).
+  </p>
+  <Banner />
+
+  <h2>Markets</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th class="num">#</th><th>Question</th><th>Contract</th><th>Resolve by</th><th class="num">Attempts</th><th class="num">Qualifying</th><th>Outcome</th></tr></thead>
+      <tbody>
+        {rows.map(({ m, latest, attempts, qualifying }: any) => (
+          <tr>
+            <td class="num">{m.number}</td>
+            <td><a href={href(`markets/${m.market}/`)}>{m.title}</a></td>
+            <td class="num">v{latest.version} <span class={`badge ${latest.status}`}>{latest.status}</span></td>
+            <td class="num">{latest.resolveBy}</td>
+            <td class="num">{attempts}</td>
+            <td class="num">{qualifying}</td>
+            <td class={latest.outcome?.outcome}>{latest.outcome?.outcome ?? "–"}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p class="muted">
+    Market 14 (deployment criteria are binding) is not in the registry: its evidence is a few public documents, so it
+    is listed directly as a YES/NO question.
+  </p>
+
+  <h2>Contribute</h2>
+  <p>
+    Have an idea, concept, or prototype for one of these questions? Sketch it in the
+    {" "}<a href="https://github.com/aintelope/ai-safety-claims-workbench">workbench</a>: freeze it, run it, and see
+    exactly what it still misses for a qualifying attempt. Sketches never count against a market.
+  </p>
+</Base>

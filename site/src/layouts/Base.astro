@@ -1,0 +1,43 @@
+---
+import data, { href } from "../lib/data";
+import "../styles.css";
+
+interface Props {
+  title: string;
+  description?: string;
+  noindex?: boolean;
+}
+const { title, description, noindex = false } = Astro.props;
+const fullTitle = title === "AI Safety Claims" ? title : `${title} · AI Safety Claims`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    {description && <meta name="description" content={description} />}
+    {noindex && <meta name="robots" content="noindex" />}
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="site-name" href={href()}>AI Safety Claims</a>
+      <nav>
+        <a href={href()}>Markets</a>
+        <a href={href("rules/common-v1/")}>Shared rules</a>
+        <a href="https://github.com/aintelope/ai-safety-claims-workbench">Contribute</a>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <p>
+        Built from <a href={data.commit ? `${data.repository}/commit/${data.commit}` : data.repository}><code>{(data.commit ?? "main").slice(0, 12)}</code></a>
+        of <a href={data.repository}>aintelope/ai-safety-claims</a>.
+        Code Apache-2.0, content CC BY 4.0.
+        <a href={href("sketches/")}>Work in progress</a>.
+      </p>
+    </footer>
+  </body>
+</html>

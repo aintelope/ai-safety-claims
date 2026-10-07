@@ -1,0 +1,22 @@
+---
+import Base from "../../layouts/Base.astro";
+import RuleTree from "../../components/RuleTree.astro";
+import data, { source, humanize } from "../../lib/data";
+
+const shared = data.sharedRules;
+const sections = Object.entries(shared).filter(([k]) => k !== "version");
+---
+<Base title={`Shared rules, version ${shared.version}`} description="Rules every market contract shares: qualification, adversarial evaluation, glossary, evidence, statistics, deadlines.">
+  <h1>Rules every contract shares (version {shared.version})</h1>
+  <p class="cite">Stable link for this version of the shared rules. Source:
+    {" "}<a href={source("shared-rules/common-v1.yaml")}><code>shared-rules/common-v1.yaml</code></a>.
+    Copied from Appendix H of <em>Towards Superintelligence Alignment</em>; until the appendix is cut down to pointers,
+    the appendix text wins on any disagreement.</p>
+  <ul class="toc">{sections.map(([k]) => <li><a href={`#${k}`}>{humanize(k)}</a></li>)}</ul>
+  {sections.map(([k, v]) => (
+    <section>
+      <h2 id={k}>{humanize(k)}</h2>
+      <RuleTree value={v} />
+    </section>
+  ))}
+</Base>

@@ -177,6 +177,18 @@ class Report:
         self.evidence = []
         self.met = []
 
+    @property
+    def status(self):
+        return ("not ready to submit" if self.blocking else
+                "ready to submit, but would not qualify" if self.qualification else
+                "ready to submit; qualification now depends on the maintainer checks")
+
+    def summary(self):
+        """The report as data, for the site."""
+        return {"status": self.status, "blocking": self.blocking, "qualification": self.qualification,
+                "evidence": self.evidence, "coverage": self.coverage, "met": self.met,
+                "maintainer": self.maintainer, "preview": self.preview}
+
     def render(self):
         out = [f"dry run: {self.attempt_dir.name}"]
         sections = [("Fix before submitting", self.blocking), ("Missing for a qualifying attempt", self.qualification),
@@ -188,10 +200,7 @@ class Report:
             if items:
                 out.append(f"\n{title}:")
                 out += [f"  - {i}" for i in items]
-        status = ("not ready to submit" if self.blocking else
-                  "ready to submit, but would not qualify" if self.qualification else
-                  "ready to submit; qualification now depends on the maintainer checks")
-        out.append(f"\nstatus: {status} ({len(self.blocking)} blocking, {len(self.qualification)} qualification gaps)")
+        out.append(f"\nstatus: {self.status} ({len(self.blocking)} blocking, {len(self.qualification)} qualification gaps)")
         return "\n".join(out) + "\n"
 
 
