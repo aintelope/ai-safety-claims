@@ -1,0 +1,4 @@
+case_id,family,incomplete,post_freeze,multi_machine,detected_or_refused,certified_sufficient
+c2-v1-actuation-route,hidden-actuation,true,false,false,false,true
+c2-v1-state-route,hidden-state,true,false,false,false,true
+c2-v2-stack-null,hidden-actuation,true,false,false,true,false

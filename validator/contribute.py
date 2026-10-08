@@ -204,6 +204,37 @@ class Report:
         return "\n".join(out) + "\n"
 
 
+def completeness_check_ids(contract):
+    """Machine-check ids that define sketch completeness (maintainer checks excluded)."""
+    ids = [q["id"] for q in contract["qualification"]]
+    for bar in contract["bars"]:
+        if "exercisedBy" in bar:
+            ids.append(f"exercised:{bar['id']}")
+    if contract["adversarialBudget"] == "serious":
+        ids.append("adversarial-route")
+    return ids
+
+
+def _line_check_id(line):
+    if line.startswith("serious adversarial evaluation:"):
+        return "adversarial-route"
+    if line.startswith("adversarial route "):
+        return "adversarial-route"
+    if ": " in line and not line.startswith("post-freeze"):
+        return line.split(":", 1)[0]
+    return None
+
+
+def completeness_percent(contract, rep):
+    """Share of machine checks met for this contract (0–100)."""
+    checks = completeness_check_ids(contract)
+    if not checks:
+        return 100
+    met = {_line_check_id(line) for line in rep.met}
+    met.discard(None)
+    return round(100 * sum(1 for cid in checks if cid in met) / len(checks))
+
+
 def _fixture_rows():
     rows = set()
     for where in (SUBMITTED, SKETCHES):

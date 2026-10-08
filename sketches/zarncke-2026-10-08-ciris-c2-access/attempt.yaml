@@ -1,0 +1,15 @@
+id: zarncke-2026-10-08-ciris-c2-access
+market: market-08
+contractVersion: 2
+attemptType: run
+submitter: zarncke
+filedAt: '2026-10-08'
+methodFreezeAt: '2026-10-08T21:17:37Z'
+systems:
+- name: C2 tool-scout access-completeness scenarios (TSA backtest fixtures)
+  version: tsa-backtest-2026-08-28
+notes: Exported from ai-safety-claims-workbench contrib/zarncke-2026-10-08-ciris-c2-access (custom).
+rawLog:
+  sha256: 06d0ff50de738cac9fb86946c84af767a48fb031f8d4280997ded6e9fb230d57
+  bytes: 5727
+  format: 'C2 access wrap log (JSON lines: header plus one fixture snapshot per frozen case)'
