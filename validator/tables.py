@@ -48,6 +48,8 @@ def _convert(raw, col):
         return raw
     if kind == "int":
         return int(raw)
+    if kind == "number":
+        return float(raw)
     if kind == "bool":
         if raw not in ("true", "false"):
             raise ValueError(f"expected true or false, got {raw!r}")

@@ -1,0 +1,15 @@
+id: zarncke-2026-10-08-et4-a0-proxy
+market: market-12
+contractVersion: 1
+attemptType: run
+submitter: zarncke
+filedAt: '2026-10-08'
+methodFreezeAt: '2026-10-08T20:06:49Z'
+systems:
+- name: lab-simulation ET-4 Secret Loyalties confirmatory battery
+  version: et4-0.1.0
+notes: Exported from ai-safety-claims-workbench contrib/zarncke-2026-10-08-et4-a0-proxy (custom).
+rawLog:
+  sha256: 359295cc80b6c207ff1a7ab30e3c44a32160113681c9c1379173c9fd23a2c072
+  bytes: 8610
+  format: 'ET-4 confirmatory wrap log (JSON lines: header plus one shift per frozen case)'

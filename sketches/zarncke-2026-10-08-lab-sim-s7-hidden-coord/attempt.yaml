@@ -1,0 +1,15 @@
+id: zarncke-2026-10-08-lab-sim-s7-hidden-coord
+market: market-11
+contractVersion: 1
+attemptType: run
+submitter: zarncke
+filedAt: '2026-10-08'
+methodFreezeAt: '2026-10-08T20:07:39Z'
+systems:
+- name: lab-simulation S7 blind coordination detector
+  version: lab-sim-0.9.3-s7-blind
+notes: Exported from ai-safety-claims-workbench contrib/zarncke-2026-10-08-lab-sim-s7-hidden-coord (custom).
+rawLog:
+  sha256: e3ed656b99f8f1158e39713c1ad859c2bc45311581327809a72b359971a6c0af
+  bytes: 3258
+  format: 'S7 blind battery wrap log (JSON lines: header plus one case per frozen row)'
