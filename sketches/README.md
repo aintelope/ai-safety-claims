@@ -28,6 +28,15 @@ A sketch can preregister: commit `freeze.yaml` and `freeze-cases.jsonl` before r
 the commit date records the freeze. After the run add `trials.jsonl` and the raw log
 (`import-inspect`, `raw-log`). The dry run checks them like an attempt's; see the README's filing section.
 
+**Self-contained vs external source.** Workbench exports usually include the full raw log under
+`raw-log/` so anyone can dry-run without network access. Small **wrap** sketches often also vendor a
+pinned upstream snapshot in the workbench repo (`source/` + hash in `contribution.yaml`) — see the
+[workbench README](https://github.com/aintelope/ai-safety-claims-workbench#external-sources-wraps).
+That is fine for sketches and pilots. When logs are large, prefer a stable URL or git commit plus a
+**content hash** in `attempt.yaml`, with the exported raw log (or a hash-sized excerpt) still present
+here so the validator can reconstruct the score table. The registry does not fetch external URLs during
+checks; it reads what is in the sketch folder.
+
 ## See where it stands
 
 ```bash

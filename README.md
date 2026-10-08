@@ -96,7 +96,8 @@ others, within the wrapping rule in [`shared-rules/common-v1.yaml`](shared-rules
 - A complete score table that misses the bars is still a qualifying attempt, and counts toward NO.
 - To write and run an evaluation, use the workbench,
   [aintelope/ai-safety-claims-workbench](https://github.com/aintelope/ai-safety-claims-workbench): Inspect
-  scaffolds per market (or a self-contained directory with an adapter), freeze discipline, and
+  scaffolds for several catalog markets (Inspect for 1 and 4; custom wraps for others), or a
+  self-contained custom directory with an adapter for any frozen contract, plus freeze discipline and
   `workbench export`, which writes a sketch here with all evidence files.
 - Not there yet? Start a **sketch** instead: the same folder under `sketches/`, which no outcome reads.
   `python -m validator dry-run <dir>` lists what it still misses, and submitting is a plain move to
