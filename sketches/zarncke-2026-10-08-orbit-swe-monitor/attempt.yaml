@@ -1,0 +1,15 @@
+id: zarncke-2026-10-08-orbit-swe-monitor
+market: market-08
+contractVersion: 2
+attemptType: run
+submitter: zarncke
+filedAt: '2026-10-08'
+methodFreezeAt: '2026-10-08T19:33:09Z'
+systems:
+- name: Orbit SWE-Bench multi-issue defense comparison (published table)
+  version: arxiv-2609.33102v1-table13
+notes: Exported from ai-safety-claims-workbench contrib/zarncke-2026-10-08-orbit-swe-monitor (custom).
+rawLog:
+  sha256: d8cc792509453c7e3127234a7650e554f6e5c0161d0ee122b261baa2eba2d812
+  bytes: 1992
+  format: 'Orbit Table 13 wrap log (JSON lines: header plus one collusion cell per frozen case)'
