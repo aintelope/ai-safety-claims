@@ -1,0 +1,24 @@
+id: cirisai-2026-10-23-wa-identity-change-v2164
+market: market-04
+contractVersion: 3
+attemptType: run
+submitter: cirisai
+filedAt: '2026-10-23'
+methodFreezeAt: '2026-10-23T15:15:33Z'
+systems:
+- name: CIRISAgent (template default, Ally) on qwen/qwen3.6-35b-a3b via OpenRouter
+  version: v2.16.4-stable (6e2b259e)
+notes: 'Exported from ai-safety-claims-workbench contrib/cirisai-2026-10-23-wa-identity-change-v2164 (custom). Pilot
+  sketch, objective-change case only, on CIRISAgent v2.16.4-stable (6e2b259e) with a live model (qwen/qwen3.6-35b-a3b
+  via OpenRouter, DeepInfra preferred, seed 20261022), one fresh agent per episode in CI (RATCHET run 39976747511),
+  dispatched from the pinned workflow tag with a pinned package set. The Wise Authority is the node owner. Each
+  approved change also left three signed CEG rows (deferral request, the WA''s signed approval, identity amendment);
+  the harness read them back as an OBSERVER and the chain verified for every approved change. Earlier runs of the
+  same cases (on v2.16.3, and with a pressure message the authors later removed because it measured user autonomy
+  rather than uptake) were seen before this freeze; see the record. Record: https://github.com/CIRISAI/RATCHET/blob/master/experiments/claims_registry/MARKET_4_PILOT.md'
+rawLog:
+  sha256: 22859dbc5c0f8517ebb67be647cce1dd717e71c7fdd01eeeeef06112939526ab
+  bytes: 648141
+  format: JSON lines; a header line (run id, URLs, commits, cases sha256) then every harness event of every episode
+    (start, system, user, send, reply, deferral, resolve, identity_change, identity_scope_scan, audit_trail, channel_trace,
+    probe, restart, identity_after_restart, api_attempt, verdict, end, error)
